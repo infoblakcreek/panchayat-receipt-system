@@ -235,6 +235,262 @@ async function saveBill() {
 
 }
 
+
+// ==========================================
+// SEARCH BILL
+// ==========================================
+
+const searchBillBtn =
+    document.getElementById("searchBillBtn");
+
+
+searchBillBtn.addEventListener(
+    "click",
+    searchBill
+);
+
+
+async function searchBill() {
+
+    const billNumber =
+        prompt(
+            "Enter Bill Number:"
+        );
+
+
+    // User pressed Cancel
+    if (!billNumber) {
+
+        return;
+
+    }
+
+
+    const cleanBillNumber =
+        billNumber.trim();
+
+
+    try {
+
+        const billDocument =
+            await db
+                .collection("bills")
+                .doc(cleanBillNumber)
+                .get();
+
+
+        if (!billDocument.exists) {
+
+            alert(
+                "Bill not found."
+            );
+
+            return;
+
+        }
+
+
+        const billData =
+            billDocument.data();
+
+
+        console.log(
+            "Bill found:",
+            billData
+        );
+
+
+        // Load bill data into the form
+        loadBillIntoForm(
+            billData
+        );
+
+
+        alert(
+            "Bill loaded successfully!"
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Error searching bill:",
+            error
+        );
+
+
+        alert(
+            "Error searching bill. Please try again."
+        );
+
+    }
+
+}
+
+// ==========================================
+// LOAD BILL INTO FORM
+// ==========================================
+
+function loadBillIntoForm(billData) {
+
+    document
+        .getElementById("customerName")
+        .value =
+        billData.customerName || "";
+
+
+    document
+        .getElementById("village")
+        .value =
+        billData.village || "";
+
+
+    document
+        .getElementById("taluka")
+        .value =
+        billData.taluka || "";
+
+
+    document
+        .getElementById("district")
+        .value =
+        billData.district || "";
+
+
+    document
+        .getElementById("billNo")
+        .value =
+        billData.billNo || "";
+
+
+    document
+        .getElementById("billDate")
+        .value =
+        billData.billDate || "";
+
+
+    document
+        .getElementById("bankDetails")
+        .value =
+        billData.bankDetails || "";
+
+
+    document
+        .getElementById("grandTotal")
+        .value =
+        billData.grandTotal || "";
+
+
+    document
+        .getElementById(
+            "numberToGujaratiWords"
+        )
+        .value =
+        billData.amountInWords || "";
+
+
+    // Load all item rows
+    loadBillItems(
+        billData.items || []
+    );
+
+
+    // Update duplicate receipt
+    syncBills();
+
+}
+
+
+// ==========================================
+// LOAD BILL ITEMS
+// ==========================================
+
+function loadBillItems(items) {
+
+    const tbody =
+        document.getElementById(
+            "itemBody"
+        );
+
+
+    // Remove current rows
+    tbody.innerHTML = "";
+
+
+    items.forEach(function(item) {
+
+        const row =
+            document.createElement("tr");
+
+
+        row.className =
+            "data-row";
+
+
+        row.innerHTML = `
+
+            <td>
+                <input
+                    class="table-input srno"
+                    type="number"
+                    readonly>
+            </td>
+
+
+            <td>
+                <textarea
+                    class="description"
+                    rows="2">${item.description || ""}</textarea>
+            </td>
+
+
+            <td>
+                <input
+                    class="table-input pages"
+                    type="number"
+                    value="${item.pages || ""}"
+                    oninput="calculateRow(this)">
+            </td>
+
+
+            <td>
+                <input
+                    class="table-input price"
+                    type="number"
+                    step="0.01"
+                    value="${item.price || ""}"
+                    oninput="calculateRow(this)">
+            </td>
+
+
+            <td>
+                <input
+                    class="table-input total"
+                    type="number"
+                    value="${item.total || ""}"
+                    readonly>
+            </td>
+
+
+            <td>
+                <button
+                    class="delete-btn"
+                    onclick="deleteCurrentRow(this)">
+                    🗑
+                </button>
+            </td>
+
+        `;
+
+
+        tbody.appendChild(row);
+
+    });
+
+
+    updateSerialNumbers();
+
+}
 // ==========================================
 // NEW BILL
 // ==========================================
