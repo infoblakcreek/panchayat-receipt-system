@@ -159,7 +159,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
       
                   <td>
                       <label>બિલ નંબર</label>
-                      <input type="text" id="billNo">
+                      <input
+                          type="text"
+                          id="billNo"
+                          readonly>
                   </td>
       
                   <td>
@@ -270,7 +273,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
       
                               </table>
                         <div class="tableButtons">
-                                <button id="addRow" onclick="addRow()">
+                                <button id="addRow" type="button">
                             + Add Next Row 
                         </button>
         
@@ -358,7 +361,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
   
                   <label>બિલ નંબર: </label>
   
-                  <span id="dBillNo"></span>
+                  <span id="dBillNo" readonly></span>
   
               </div>
   
@@ -482,13 +485,19 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
     
   </div>
-<!-- <script type="module" src="js/firebase.js"></script> -->
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-<script src="script.js"></script>
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+
+
+<!-- Your JavaScript -->
+<script type="module" src="script.js"></script>
 
 </body>
 
