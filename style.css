@@ -1,0 +1,1198 @@
+/*==========================================
+            GOOGLE FONTS
+==========================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/*==============================
+        PAGE
+==============================*/
+html{
+
+    -webkit-print-color-adjust:exact;
+    print-color-adjust:exact;
+
+}
+
+body{
+
+    margin:0;
+    padding:5px;
+    background:#e5e5e5;
+    font-family:'Poppins','Noto Sans Gujarati',sans-serif;
+
+}
+
+
+/*==============================
+        MAIN BILL
+==============================*/
+
+.mainBillWrapper{
+    width:100%;
+    margin:0;
+    display:block;  
+    background:white;
+    padding:10px;
+    border-radius:10px;
+}
+
+.billContainer{
+    width:100%;
+    padding:10px;
+    border-radius:10px;
+    box-shadow:none;
+    border:2px solid #1565C0;
+}
+
+.page{
+    width:210mm;
+    min-height:297mm;
+    margin:0 auto;
+    padding:5mm;
+    background:#fff;
+    box-sizing:border-box;
+}
+/*==========================================
+            APP HEADER
+==========================================*/
+
+.billHeader{
+    margin-bottom:6px;
+}
+
+.ganesh{
+    text-align:center;
+    color:#D32F2F;
+    font-size:13px;
+    font-weight:bold;
+    margin-bottom:4px;
+}
+
+.headerTable{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.headerTable td{
+    vertical-align:top;
+    padding:2px 4px;
+}
+
+.companyCell{
+    width:82%;
+}
+
+.phoneCell{
+    width:18%;
+    text-align:right;
+    vertical-align:middle;
+    white-space:nowrap;
+    color:#1565C0;
+    font-size:18px;
+    font-weight:700;
+}
+
+.companyCell h1{
+    font-size:20px;
+    color:#1565C0;
+    margin:0;
+}
+
+.companyCell h2{
+    font-size:13px;
+    color:#444;
+    margin:2px 0;
+}
+
+.companyCell p{
+    font-size:12px;
+    margin:1px 0;
+}
+
+.headerLine{
+    margin-top:4px;
+    border:none;
+    border-top:2px solid #1565C0;
+}
+
+/*==========================================
+            CUSTOMER DETAILS
+==========================================*/
+
+.customerCard{
+
+    border:1px solid #1565C0;
+
+    border-radius:6px;
+
+    padding:8px;
+
+    margin:8px 0;
+
+}
+
+.customerTable{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+.customerTable td{
+
+    padding:4px 8px;
+
+    vertical-align:top;
+
+}
+
+.customerTable label{
+
+    display:block;
+
+    color:#1565C0;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    margin-bottom:3px;
+
+}
+
+.customerTable input{
+
+    width:100%;
+
+    height:30px;
+
+    border:1px solid #ccc;
+
+    border-radius:5px;
+
+    padding:4px 8px;
+
+    font-size:13px;
+
+}
+
+.customerCard .row{
+
+grid-template-columns:1fr;
+
+}
+
+
+/*==========================================
+            PROFESSIONAL BILL TABLE
+==========================================*/
+.billContainer *{
+
+    overflow-wrap:break-word;
+
+}
+
+.tableCard{
+
+    background:#ffffff;
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+    margin:10px 0;
+
+    border:1px solid #dbe7f3;
+
+}
+
+#billTable{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+#billTable thead{
+
+    background:#1976D2;
+
+    color:white;
+
+}
+
+#billTable th{
+
+    padding:6px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    text-align:center;
+
+    letter-spacing:.5px;
+
+}
+
+
+#billTable td{
+
+    border-bottom:1px solid #e9eef5;
+
+    padding:2px;
+
+    text-align:center;
+
+
+}
+
+#billTable tbody tr:nth-child(even){
+
+    background:#f8fbff;
+
+}
+
+#billTable tbody tr:hover{
+
+    background:#eef6ff;
+
+}
+
+#billTable input{
+
+    width:100%;
+
+    border:none;
+
+    outline:none;
+
+    background:transparent;
+
+    font-size:10px;
+
+    text-align:center;
+
+    padding:2px;
+
+    font-family:'Noto Sans Gujarati',sans-serif;
+    min-height: 28px;
+   
+    resize: vertical;     
+    overflow: hidden;
+    white-space: pre-wrap;
+    
+}
+
+.delete-btn{
+
+    width:32px;
+
+    height:32px;
+
+    border:none;
+
+    border-radius:5px;
+
+    background:#d32f2f;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+.delete-btn:hover{
+
+    background:#b71c1c;
+
+}
+
+.amount{
+
+    font-weight:bold;
+
+    color:#1565C0;
+
+}
+.tableButtons{
+
+    display:flex;
+    justify-content:flex-end;
+    gap:15px;
+    padding:10px;
+    background:#fafbfd;
+
+}
+#billTable td {
+    vertical-align: top;
+}
+
+#billTable tr {
+    height: auto;
+    width: auto;
+}
+.description {
+    width: 100%;
+    min-height: 50px;
+    border: none;
+    resize: vertical;      /* or use "none" if you don't want resizing */
+    overflow: hidden;
+    white-space: pre-wrap;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    text-align:left !important;
+    font-family: "Noto Sans Gujarati", sans-serif;
+    font-size: 15px;
+    padding: 2px;
+    background: transparent;
+}
+#addRow{
+
+    background:#ffffff;
+    color:#28a745;
+    border:solid;
+    border-color: #28a745;
+    padding:8px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600
+
+}
+
+#addRow:hover{
+    background:#218838;
+}
+
+#pdf-generate{
+
+    background:#ffffff;
+    color:#007bff;
+    border:solid;
+    border-color: #007bff;
+    padding:8px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600
+}
+#pdf-generate:hover{
+    background:#0056b3;
+}
+
+#print-btn{
+
+    background:#ffffff;
+    color:#fd7e14;
+    border:solid;
+    border-color: #fd7e14;
+    padding:8px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600
+}
+
+#print-btn:hover{
+    background:#e66a00;
+}
+
+#addRow:hover,
+#pdf-generat:hover,
+#removeRow:hover{
+
+    opacity:.9;
+
+}
+/*==========================================
+            SUMMARY SECTION
+==========================================*/
+.summaryTable{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:8px;
+
+}
+
+.summaryTable td{
+
+    padding:6px;
+
+    vertical-align:top;
+
+}
+
+.summaryTable label{
+
+    display:block;
+
+    margin-bottom:4px;
+
+    color:#1565C0;
+
+    font-weight:600;
+
+    font-size:13px;
+
+}
+
+.summaryTable textarea{
+
+    width:100%;
+
+    height:55px;
+
+    resize:none;
+
+    border:2px solid #E3F2FD;
+
+    border-radius:6px;
+
+    padding:6px;
+
+    font-family:"Noto Sans Gujarati", sans-serif;
+
+}
+
+.summaryTable input{
+
+    width:100%;
+
+    height:55px;
+
+    border:2px solid #E3F2FD;
+
+    border-radius:6px;
+
+    padding:6px;
+
+    text-align:right;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    background:#FAFCFF;
+
+}
+
+/*==========================================
+        SIGNATURE SECTION
+==========================================*/
+
+.signatureSection{
+
+    margin-top:5px;
+
+}
+
+.signatureContainer{
+
+    margin-top:5px;
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:10px;
+
+}
+
+.signatureCard{
+
+    background:white;
+
+    padding:10px;
+
+    border-radius:15px;
+
+    text-align:center;
+
+}
+
+.signatureLine{
+
+    height:35px;
+
+    border-bottom:2px solid #444;
+
+    margin-bottom:5px;
+
+}
+
+.signatureCard h4{
+
+    color:#333;
+
+    font-size:16px;
+
+}
+
+.cutLine{
+
+    margin:30px 0;
+
+    text-align:center;
+
+    border-top:3px dashed #888;
+
+    position:relative;
+
+}
+
+.cutLine span{
+
+    position:relative;
+
+    top:-16px;;
+
+    background:#edf2f7;
+
+    padding:0 8px;
+
+    color:#666;
+
+    font-weight:600;
+
+ }
+ 
+/*==================================================
+        COMPACT DUPLICATE RECEIPT
+        CUSTOMER COPY
+===================================================*/
+
+.duplicateReceipt{
+
+    width:100%;
+    height:20%;
+
+    background:white;
+
+    border:2px solid #1565C0;
+
+    border-radius:10px;
+
+    padding:8px;
+
+    /* margin-top:6px; */
+
+    font-family:'Noto Sans Gujarati',sans-serif;
+
+}
+
+
+/*==============================
+        HEADER
+===============================*/
+
+.duplicateHeader{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    border-bottom:2px solid #1565C0;
+
+    padding-bottom:8px;
+
+}
+
+
+.duplicateCompany h2{
+
+    margin:0;
+
+    font-size:22px;
+
+    color:#1565C0;
+
+}
+
+
+.duplicateCompany h4{
+
+    margin:2px 0;
+
+    font-size:13px;
+
+    font-family:Poppins;
+
+    color:#444;
+
+}
+
+
+.duplicateCompany p{
+
+    margin:2px 0;
+
+    font-size:12px;
+
+}
+
+
+.duplicatePhone{
+
+    background:#ffffff;
+
+    color:white;
+
+    padding:8px 12px;
+
+    border-radius:6px;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+}
+
+
+/*==============================
+        TITLE
+===============================*/
+
+.receiptTitle{
+
+    text-align:center;
+
+    font-size:17px;
+
+    font-weight:700;
+
+    color:#1565C0;
+
+    margin:8px 0;
+
+}
+
+
+/*==============================
+        CUSTOMER DETAILS
+===============================*/
+
+.duplicateCustomer{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:10px;
+
+    margin-bottom:6px;
+
+}
+
+
+.duplicateCustomer div{
+
+    border-bottom:1px dashed #999;
+
+    padding-bottom:3px;
+
+}
+
+
+.duplicateCustomer label{
+
+    font-size:12px;
+
+    color:#1565C0;
+
+    font-weight:600;
+
+    display:block;
+
+}
+
+
+.duplicateCustomer span{
+
+    font-size:14px;
+
+    font-weight:500;
+
+}
+
+
+.fullWidth{
+
+    grid-column:1/-1;
+
+}
+
+
+/*==============================
+        RECEIPT BODY
+===============================*/
+
+
+.receiptBody{
+
+    border-top:1px solid #ddd;
+
+    margin-top:8px;
+
+    padding-top:8px;
+
+}
+
+
+.receiptBody p{
+
+    font-size:14px;
+
+    margin:5px 0;
+
+    line-height:1.5;
+
+}
+
+
+.receiptBody strong{
+
+    color:#1565C0;
+
+}
+
+
+/*==============================
+        AMOUNT WORDS
+===============================*/
+
+
+.amountWordsReceipt{
+
+    background:#f4f8ff;
+
+    border-radius:6px;
+
+    padding:6px 10px;
+
+    margin:8px 0;
+
+}
+
+
+.amountWordsReceipt label{
+
+    font-size:12px;
+
+    color:#1565C0;
+
+    font-weight:bold;
+
+}
+
+
+#dAmountWords{
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+
+/*==============================
+        PAYMENT DETAILS
+===============================*/
+
+
+.paymentDetails{
+    display:flex;
+    align-items:flex-end;
+    gap:10px;
+    margin-top:8px;
+}
+
+.paymentDetails label{
+    white-space:nowrap;
+    color:#1565C0;
+    font-size:13px;
+    font-weight:600;
+}
+
+#bankDetails{
+    flex:1;
+    height:24px;
+
+    border:none;
+    border-bottom:1.5px dotted #444;
+    background:transparent;
+
+    resize:none;
+    overflow:hidden;
+
+    outline:none;
+
+    padding:0 2px;
+
+    font-family:"Noto Sans Gujarati", sans-serif;
+    font-size:13px;
+    line-height:22px;
+}
+
+
+/*==============================
+        FOOTER
+===============================*/
+
+
+.duplicateFooter{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:10px;
+
+    padding-top:8px;
+    border-top:1px solid #ccc;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+/*==============================
+        PRINT A4
+==============================*/
+
+/* =====================================================
+   COMPACT ONE-PAGE A4 PRINT
+===================================================== */
+
+@page {
+    size: A4 portrait;
+    margin: 3mm;
+}
+
+@media print {
+
+    html,
+    body {
+        width: 210mm;
+        height: 297mm;
+        margin: 0 !important;
+        padding: 0 !important;
+        background: white !important;
+        overflow: hidden;
+    }
+
+    .page {
+        width: 204mm;
+        height: 291mm;
+        margin: 0 auto !important;
+        padding: 3mm !important;
+        box-shadow: none !important;
+        overflow: hidden;
+    }
+
+    /* Hide buttons */
+    .tableButtons,
+    button {
+        display: none !important;
+    }
+
+
+    /* =================================================
+       MAIN BILL
+    ================================================= */
+
+    .mainBillWrapper {
+        width: 100% !important;
+        height: auto !important;
+        padding: 4px !important;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .billContainer {
+        width: 70% !important;
+        max-width: 70% !important;
+        padding: 4px !important;
+        justify-content: center;
+    }
+
+
+    /* =================================================
+       HEADER - VERY COMPACT
+    ================================================= */
+
+    .billHeader {
+        margin-bottom: 3px !important;
+    }
+
+    .ganesh {
+        font-size: 10px !important;
+        margin-bottom: 2px !important;
+    }
+
+    .companyCell h1 {
+        font-size: 14px !important;
+        margin: 0 !important;
+    }
+
+    .companyCell h2 {
+        font-size: 9px !important;
+        margin: 1px 0 !important;
+    }
+
+    .companyCell p {
+        font-size: 8px !important;
+        line-height: 1.1 !important;
+        margin: 1px 0 !important;
+    }
+
+    .phoneCell {
+        font-size: 12px !important;
+    }
+
+    .headerLine {
+        margin-top: 2px !important;
+        border-top-width: 1px !important;
+    }
+
+
+    /* =================================================
+       CUSTOMER DETAILS
+    ================================================= */
+
+    .customerCard {
+        padding: 3px !important;
+        margin: 3px 0 !important;
+        border-radius: 3px !important;
+    }
+
+    .customerTable td {
+        padding: 2px 4px !important;
+    }
+
+    .customerTable label {
+        font-size: 8px !important;
+        margin-bottom: 1px !important;
+    }
+
+    .customerTable input {
+        height: 18px !important;
+        font-size: 9px !important;
+        padding: 1px 4px !important;
+        border-radius: 2px !important;
+    }
+
+
+    /* =================================================
+       ITEMS TABLE
+    ================================================= */
+
+    .tableCard {
+        margin: 3px 0 !important;
+        border-radius: 4px !important;
+    }
+
+    #billTable th {
+        padding: 3px !important;
+        font-size: 9px !important;
+    }
+
+    #billTable td {
+        padding: 0 !important;
+        height: 20px !important;
+    }
+
+    #billTable input {
+        min-height: 18px !important;
+        height: 18px !important;
+        padding: 1px !important;
+        font-size: 8px !important;
+    }
+
+    .description {
+        min-height: 18px !important;
+        height: 18px !important;
+        font-size: 8px !important;
+        padding: 1px !important;
+    }
+
+    .delete-btn {
+        width: 18px !important;
+        height: 18px !important;
+        font-size: 9px !important;
+    }
+
+
+    /* =================================================
+       SUMMARY
+    ================================================= */
+
+    .summaryTable {
+        margin-top: 2px !important;
+    }
+
+    .summaryTable td {
+        padding: 2px !important;
+    }
+
+    .summaryTable label {
+        font-size: 8px !important;
+        margin-bottom: 1px !important;
+    }
+
+    .summaryTable textarea,
+    .summaryTable input {
+        height: 25px !important;
+        font-size: 10px !important;
+        padding: 2px !important;
+    }
+
+
+    /* =================================================
+       MAIN BILL FOOTER
+    ================================================= */
+
+    .signatureSection {
+        margin-top: 2px !important;
+    }
+
+    .duplicateFooter {
+        margin-top: 3px !important;
+        padding-top: 3px !important;
+        font-size: 9px !important;
+    }
+
+    .duplicateFooter h3 {
+        font-size: 9px !important;
+    }
+
+
+    /* =================================================
+       CUT LINE
+    ================================================= */
+
+    .cutLine {
+        margin: 3px 0 !important;
+        border-top-width: 1px !important;
+        font-size: 8px !important;
+    }
+
+    .cutLine span {
+        top: -8px !important;
+        padding: 0 4px !important;
+    }
+
+
+    /* =================================================
+       DUPLICATE RECEIPT - VERY COMPACT
+    ================================================= */
+
+    .duplicateReceipt {
+        width: 100% !important;
+        padding: 4px !important;
+        border-radius: 4px !important;
+    }
+
+    .duplicateHeader {
+        padding-bottom: 3px !important;
+        border-bottom-width: 1px !important;
+    }
+
+    .duplicateCompany h4 {
+        font-size: 11px !important;
+        margin: 0 !important;
+    }
+
+    .duplicateCompany p {
+        font-size: 8px !important;
+        margin: 1px 0 !important;
+    }
+
+    .duplicatePhone {
+        padding: 3px 6px !important;
+        font-size: 9px !important;
+    }
+
+    .receiptTitle {
+        font-size: 12px !important;
+        margin: 3px 0 !important;
+    }
+
+    .duplicateCustomer {
+        gap: 4px !important;
+        margin-bottom: 3px !important;
+    }
+
+    .duplicateCustomer div {
+        padding-bottom: 1px !important;
+    }
+
+    .duplicateCustomer label {
+        font-size: 8px !important;
+    }
+
+    .duplicateCustomer span {
+        font-size: 9px !important;
+    }
+
+    .receiptBody {
+        margin-top: 3px !important;
+        padding-top: 3px !important;
+    }
+
+    .receiptBody p {
+        font-size: 9px !important;
+        margin: 2px 0 !important;
+        line-height: 1.2 !important;
+    }
+
+    .amountWordsReceipt {
+        padding: 3px 5px !important;
+        margin: 3px 0 !important;
+    }
+
+    .amountWordsReceipt label {
+        font-size: 8px !important;
+    }
+
+    #dAmountWords {
+        font-size: 9px !important;
+    }
+
+    .paymentDetails {
+        gap: 5px !important;
+        margin-top: 3px !important;
+    }
+
+    .paymentDetails label {
+        font-size: 8px !important;
+    }
+
+    #bankDetails {
+        height: 16px !important;
+        font-size: 8px !important;
+        line-height: 15px !important;
+    }
+
+    .duplicateReceipt .duplicateFooter {
+        margin-top: 4px !important;
+        padding-top: 3px !important;
+        font-size: 8px !important;
+    }
+
+}
