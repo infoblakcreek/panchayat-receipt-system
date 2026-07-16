@@ -1,4 +1,241 @@
 // ==========================================
+// FIREBASE CONFIGURATION
+// ==========================================
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCCgBmxUaqH-5EWo6O83imC81RXVZcZaH8",
+  authDomain: "panchayat-bill-system.firebaseapp.com",
+  projectId: "panchayat-bill-system",
+  storageBucket: "panchayat-bill-system.firebasestorage.app",
+  messagingSenderId: "9498305655",
+  appId: "1:9498305655:web:9f86a8eff58ef5bb8e5272"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+
+// Initialize Firestore
+const db = firebase.firestore();
+
+console.log("Firebase connected successfully!");
+
+// ==========================================
+// GENERATE RANDOM BILL NUMBER
+// ==========================================
+
+async function generateBillNumber() {
+
+    const currentYear =
+        new Date()
+            .getFullYear();
+
+
+    let billNumber;
+
+    let exists = true;
+
+
+    while (exists) {
+
+        // Randomly choose 6 or 7 digits
+        const digitCount =
+            Math.random() < 0.5
+                ? 6
+                : 7;
+
+
+        const min =
+            digitCount === 6
+                ? 100000
+                : 1000000;
+
+
+        const max =
+            digitCount === 6
+                ? 999999
+                : 9999999;
+
+
+        const randomNumber =
+            Math.floor(
+                Math.random() *
+                (max - min + 1)
+            ) + min;
+
+
+        billNumber =
+            `${currentYear}-${randomNumber}`;
+
+
+        // Check if this bill number already exists
+        const existingBill =
+            await db
+                .collection("bills")
+                .doc(billNumber)
+                .get();
+
+
+        exists =
+            existingBill.exists;
+
+    }
+
+
+    return billNumber;
+
+}
+// ==========================================
+// SET INITIAL BILL
+// ==========================================
+
+async function setInitialBillNumber() {
+
+    const billNumber =
+        await generateBillNumber();
+
+
+    document
+        .getElementById("billNo")
+        .value =
+        billNumber;
+
+
+    // Sync the new bill number to duplicate receipt
+    syncBills();
+
+}
+// ==========================================
+// SAVE BILL BUTTON
+// ==========================================
+
+const saveBillBtn =
+    document.getElementById("saveBillBtn");
+
+
+saveBillBtn.addEventListener("click", saveBill);
+
+async function saveBill() {
+
+    // Collect all item rows
+    const items = [];
+
+    document
+        .querySelectorAll("#itemBody tr")
+        .forEach(function(row) {
+
+            const item = {
+
+                description:
+                    row.querySelector(".description").value,
+
+                pages:
+                    row.querySelector(".pages").value,
+
+                price:
+                    row.querySelector(".price").value,
+
+                total:
+                    row.querySelector(".total").value
+
+            };
+
+            items.push(item);
+
+        });
+
+
+    // Complete bill data
+    const billData = {
+
+        customerName:
+            document.getElementById("customerName").value,
+
+        village:
+            document.getElementById("village").value,
+
+        taluka:
+            document.getElementById("taluka").value,
+
+        district:
+            document.getElementById("district").value,
+
+        billNo:
+            document.getElementById("billNo").value,
+
+        billDate:
+            document.getElementById("billDate").value,
+
+        bankDetails:
+            document.getElementById("bankDetails").value,
+
+        grandTotal:
+            document.getElementById("grandTotal").value,
+
+        amountInWords:
+            document.getElementById(
+                "numberToGujaratiWords"
+            ).value,
+
+        items: items
+
+    };
+
+
+  try {
+
+    const billNumber =
+        billData.billNo.trim();
+
+
+    if (!billNumber) {
+
+        alert("Bill number is missing.");
+
+        return;
+
+    }
+
+
+    await db
+        .collection("bills")
+        .doc(billNumber)
+        .set({
+
+            ...billData,
+
+            createdAt:
+                firebase.firestore.FieldValue.serverTimestamp()
+
+        });
+
+
+    alert("Bill saved successfully!");
+
+
+    console.log(
+        "Bill saved successfully:",
+        billData
+    );
+
+
+} catch (error) {
+
+    console.error(
+        "Error saving bill:",
+        error
+    );
+
+
+    alert(
+        "Error saving bill. Please try again."
+    );
+
+}
+
+}
+
+// ==========================================
 // NEW BILL
 // ==========================================
 
@@ -6,7 +243,7 @@ const newBillBtn =
     document.getElementById("newBillBtn");
 
 
-newBillBtn.addEventListener("click", function () {
+newBillBtn.addEventListener("click", async function () {
 
     const confirmNewBill =
         confirm(
@@ -31,7 +268,15 @@ newBillBtn.addEventListener("click", function () {
 
     document.getElementById("district").value = "";
 
-    document.getElementById("billNo").value = "";
+    const newBillNumber =
+    await generateBillNumber();
+
+  
+    // Put it in main bill
+    document
+        .getElementById("billNo")
+        .value =
+        newBillNumber;
 
     document.getElementById("billDate").value = "";
 
@@ -59,12 +304,10 @@ newBillBtn.addEventListener("click", function () {
 
     // Add one fresh row
 
-    addRow();
+    addItemRow();
 
 
     // Clear duplicate receipt
-
-    document.getElementById("dBillNo").textContent = "";
 
     document.getElementById("dBillDate").textContent = "";
 
@@ -82,10 +325,9 @@ newBillBtn.addEventListener("click", function () {
 
 
     alert("New bill is ready!");
+  syncBills();
 
 });
-
-
 
 
 function calculateRow(input){
@@ -109,6 +351,7 @@ function calculateRow(input){
 
     calculateGrandTotal();
 }
+window.calculateRow = calculateRow;
 
 function calculateGrandTotal(){
 
@@ -125,7 +368,7 @@ function calculateGrandTotal(){
         .value = sum.toFixed(2);
 }
 
-function addRow() {
+function addItemRow() {
 
     const tbody = document.getElementById("itemBody");
 
@@ -178,7 +421,13 @@ function addRow() {
 
     updateSerialNumbers();
 }
+const addRowBtn =
+    document.getElementById("addRow");
 
+addRowBtn.addEventListener(
+    "click",
+    addItemRow
+);
 
 function deleteCurrentRow(button) {
 
@@ -193,6 +442,7 @@ function deleteCurrentRow(button) {
 
     updateSerialNumbers();
 }
+window.deleteCurrentRow = deleteCurrentRow;
 
 
 function updateSerialNumbers() {
@@ -365,3 +615,7 @@ async function generatePDF() {
     buttons.style.display = "flex";
 
 }
+
+
+
+setInitialBillNumber();
