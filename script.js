@@ -236,7 +236,7 @@ function syncBills(){
         document.getElementById("grandTotal").value;
 
     document.getElementById("dAmountWords").innerText =
-        document.getElementByIdb("numberToGujaratiWords").value;
+        document.getElementById("numberToGujaratiWords").value;
 
 }
 
