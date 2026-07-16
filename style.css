@@ -1,4 +1,4 @@
-/*==========================================
+/* ==========================================
         PROFESSIONAL APP TOOLBAR
 ========================================== */
 
@@ -1010,6 +1010,252 @@ grid-template-columns:1fr;
 
 }
 
+    /*==================================================
+        RESPONSIVE BILL PAGE
+==================================================*/
+
+@media (max-width: 1100px) {
+
+    /* ================================
+       PAGE
+    ================================= */
+
+    .page {
+        width: 100%;
+        min-height: auto;
+        padding: 20px;
+    }
+
+
+    /* ================================
+       MAIN BILL
+    ================================= */
+
+    .mainBillWrapper {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .billContainer {
+        width: 100%;
+        padding: 10px;
+    }
+
+
+    /* ================================
+       BILL HEADER
+    ================================= */
+
+    .headerTable {
+        width: 100%;
+    }
+
+    .companyCell {
+        width: 75%;
+    }
+
+    .phoneCell {
+        width: 25%;
+    }
+
+
+    /* ================================
+       CUSTOMER DETAILS
+    ================================= */
+
+    .customerCard {
+        width: 100%;
+    }
+
+    .customerTable {
+        width: 100%;
+    }
+
+
+    /* ================================
+       ITEMS TABLE
+    ================================= */
+
+    .tableCard {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+    #billTable {
+        width: 100%;
+        min-width: 700px;
+    }
+
+
+    /* ================================
+       SUMMARY
+    ================================= */
+
+    .summaryTable {
+        width: 100%;
+    }
+
+
+    /* ================================
+       BUTTONS
+    ================================= */
+
+    .tableButtons {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+
+    /* ================================
+       DUPLICATE RECEIPT
+    ================================= */
+
+    .duplicateReceipt {
+        width: 100%;
+    }
+
+}
+
+  @media (max-width: 700px) {
+
+    /* ================================
+       PAGE
+    ================================= */
+
+    .page {
+        padding: 8px;
+    }
+
+    .mainBillWrapper {
+        padding: 5px;
+    }
+
+    .billContainer {
+        padding: 6px;
+    }
+
+
+    /* ================================
+       MAIN HEADER
+    ================================= */
+
+    .headerTable,
+    .headerTable tbody,
+    .headerTable tr,
+    .headerTable td {
+        display: block;
+        width: 100%;
+    }
+
+    .companyCell {
+        text-align: center;
+    }
+
+    .phoneCell {
+        text-align: center;
+        padding-top: 8px !important;
+    }
+
+
+    /* ================================
+       CUSTOMER DETAILS
+    ================================= */
+
+    .customerTable,
+    .customerTable tbody,
+    .customerTable tr,
+    .customerTable td {
+        display: block;
+        width: 100%;
+    }
+
+    .customerTable td {
+        padding: 5px 0;
+    }
+
+
+    /* ================================
+       ITEM TABLE
+    ================================= */
+
+    .tableCard {
+        overflow-x: auto;
+    }
+
+    #billTable {
+        min-width: 700px;
+    }
+
+
+    /* ================================
+       SUMMARY
+    ================================= */
+
+    .summaryTable,
+    .summaryTable tbody,
+    .summaryTable tr,
+    .summaryTable td {
+        display: block;
+        width: 100%;
+    }
+
+    .summaryTable td {
+        padding: 5px 0;
+    }
+
+
+    /* ================================
+       BUTTONS
+    ================================= */
+
+    .tableButtons {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .tableButtons button {
+        width: 100%;
+    }
+
+
+    /* ================================
+       DUPLICATE RECEIPT HEADER
+    ================================= */
+
+    .duplicateHeader {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+
+
+    /* ================================
+       DUPLICATE CUSTOMER DETAILS
+    ================================= */
+
+    .duplicateCustomer {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .duplicateCustomer div {
+        width: 100%;
+    }
+
+
+    /* ================================
+       FOOTER
+    ================================= */
+
+    .duplicateFooter {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+}
+
 /*==============================
         PRINT A4
 ==============================*/
@@ -1022,6 +1268,7 @@ grid-template-columns:1fr;
     size: A4 portrait;
     margin: 3mm;
 }
+
 
 @media print {
 
@@ -1343,5 +1590,4 @@ grid-template-columns:1fr;
 
     }
 
-}
 }
