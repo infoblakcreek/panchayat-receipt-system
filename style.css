@@ -1,4 +1,144 @@
 /*==========================================
+        PROFESSIONAL APP TOOLBAR
+========================================== */
+
+.topBar{
+
+    width:100%;
+
+    min-height:64px;
+
+    padding:10px 24px;
+
+    background:#ffffff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:20px;
+
+    border-bottom:1px solid #e1e5eb;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.06);
+
+}
+
+
+/* APP TITLE */
+
+.appTitle{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    color:#1565C0;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    white-space:nowrap;
+
+}
+
+
+/* BUTTON GROUP */
+
+.topActions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+
+/* ALL BUTTONS SAME SIZE */
+
+.topActions button{
+
+    width:132px;
+
+    height:38px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:6px;
+
+    padding:0 8px;
+
+    border:1px solid #d9e0e8;
+
+    border-radius:6px;
+
+    background:#ffffff;
+
+    color:#333;
+
+    font-family:'Poppins', sans-serif;
+
+    font-size:12px;
+
+    font-weight:500;
+
+    cursor:pointer;
+
+    transition:all .2s ease;
+
+}
+
+
+/* HOVER */
+
+.topActions button:hover{
+
+    background:#f4f8fc;
+
+    border-color:#1565C0;
+
+    color:#1565C0;
+
+    transform:translateY(-1px);
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:1100px){
+
+    .topBar{
+        flex-direction:column;
+        gap:10px;
+        align-items:stretch;
+    }
+
+    .appTitle{
+        justify-content:center;
+    }
+
+    .topActions{
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+
+}
+
+
+
+/*==========================================
             GOOGLE FONTS
 ==========================================*/
 
@@ -1195,4 +1335,13 @@ grid-template-columns:1fr;
         font-size: 8px !important;
     }
 
+    .topBar,
+    .tableButtons,
+    button{
+
+        display:none !important;
+
+    }
+
+}
 }
