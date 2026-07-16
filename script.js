@@ -1,3 +1,93 @@
+// ==========================================
+// NEW BILL
+// ==========================================
+
+const newBillBtn =
+    document.getElementById("newBillBtn");
+
+
+newBillBtn.addEventListener("click", function () {
+
+    const confirmNewBill =
+        confirm(
+            "Are you sure you want to start a new bill?"
+        );
+
+
+    if (!confirmNewBill) {
+
+        return;
+
+    }
+
+
+    // Clear customer details
+
+    document.getElementById("customerName").value = "";
+
+    document.getElementById("village").value = "";
+
+    document.getElementById("taluka").value = "";
+
+    document.getElementById("district").value = "";
+
+    document.getElementById("billNo").value = "";
+
+    document.getElementById("billDate").value = "";
+
+
+    // Clear bank details
+
+    document.getElementById("bankDetails").value = "";
+
+
+    // Clear amount fields
+
+    document.getElementById("grandTotal").value = "";
+
+    document.getElementById("numberToGujaratiWords").value = "";
+
+
+    // Remove all existing rows
+
+    const itemBody =
+        document.getElementById("itemBody");
+
+
+    itemBody.innerHTML = "";
+
+
+    // Add one fresh row
+
+    addRow();
+
+
+    // Clear duplicate receipt
+
+    document.getElementById("dBillNo").textContent = "";
+
+    document.getElementById("dBillDate").textContent = "";
+
+    document.getElementById("dCustomerName").textContent = "";
+
+    document.getElementById("dVillage").textContent = "";
+
+    document.getElementById("dTaluka").textContent = "";
+
+    document.getElementById("dDistrict").textContent = "";
+
+    document.getElementById("dGrandTotal").textContent = "";
+
+    document.getElementById("dAmountWords").textContent = "";
+
+
+    alert("New bill is ready!");
+
+});
+
+
+
+
 function calculateRow(input){
 
     const row = input.closest("tr");
@@ -146,7 +236,7 @@ function syncBills(){
         document.getElementById("grandTotal").value;
 
     document.getElementById("dAmountWords").innerText =
-        document.getElementById("numberToGujaratiWords").value;
+        document.getElementByIdb("numberToGujaratiWords").value;
 
 }
 
