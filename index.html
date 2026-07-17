@@ -50,11 +50,10 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
             🔍 <span>Search Bill</span>
         </button>
 
-        <button id="printBillBtn"
-                onclick="window.print()">
-            🖨 <span>Print</span>
-        </button>
-
+      <button id="printBillBtn" type="button">
+    🖨 <span>Print</span>
+</button>
+      
         <button id="pdf-generate">
             📄 <span>Download PDF</span>
         </button>
@@ -119,65 +118,95 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                      ==========================================-->
                
                      <div class="customerCard">
-      
+
                           <table class="customerTable">
-      
-                              <tr>
-      
-                  <td colspan="2">
-                      <label>શ્રીમાન</label>
-                      <input type="text"
-                             id="customerName"
-                             placeholder="ગ્રાહકનું નામ">
-                  </td>
-      
-              </tr>
-      
-                              <tr>
-      
-                  <td colspan="2"> 
-                      <label>સરનામું</label>
-                      <input type="text" id="village">
-                  </td>
-              </tr>
-                       
-                              <tr>
-      
-                  <td>
-                      <label>તાલુકો</label>
-                      <input type="text" id="taluka">
-                  </td>
-      
-                  <td>
-                      <label>જિલ્લો</label>
-                      <input type="text" id="district">
-                  </td>
-      
-              </tr>
-                
-                              <tr>
-      
-                  <td>
-                      <label>બિલ નંબર</label>
-                      <input
-                          type="text"
-                          id="billNo"
-                          readonly>
-                  </td>
-      
-                  <td>
-                      <label>તારીખ</label>
-                      <input
-                          type="date"
-                          id="billDate"
-                          placeholder="DD/MM/YYYY">
-                  </td>
-      
-                </tr>
-      
-                          </table>
-      
-                      </div>
+
+        <tr>
+
+            <td colspan="3">
+
+                <label>શ્રીમાન, </label>
+
+                <input
+                    type="text"
+                    id="customerName">
+
+            </td>
+
+        </tr>
+
+
+       <tr>
+
+    <td class="addressCell">
+
+        <label>સરનામું: </label>
+
+        <input
+            type="text"
+            id="village">
+
+
+        <label class="panchayatLabel">
+            ગ્રામ પંચાયત
+        </label>
+
+    </td>
+
+
+    <td>
+
+        <label>તાલુકો: </label>
+
+        <input
+            type="text"
+            id="taluka">
+
+    </td>
+
+
+    <td>
+
+        <label>જિલ્લો: </label>
+
+        <input
+            type="text"
+            id="district">
+
+    </td>
+
+</tr>
+
+
+        <tr>
+
+            <td>
+
+                <label>બિલ નંબર: </label>
+
+                <input
+                    type="text"
+                    id="billNo"
+                    readonly>
+
+            </td>
+
+
+            <td>
+
+                <label>તારીખ: </label>
+
+                <input
+                    type="date"
+                    id="billDate">
+
+            </td>
+
+        </tr>
+
+    </table>
+
+                    </div>
                     <!--==================================================
                                     ITEMS TABLE
                       ===================================================-->
@@ -195,7 +224,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                                 <th width="12%">પાનાં</th>
                                 <th width="15%">ભાવ (₹)</th>
                                 <th width="15%">રકમ (₹)</th>
-                                <th width="5%">❌</th>
+                                <th width="5%"></th>
+                                
         
                             </tr>
         
@@ -235,8 +265,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                                     <button class="delete-btn" onclick="deleteCurrentRow(this)">
                                   🗑
                                     </button>
-        
-            </td>
+                              </td>
+                              
                             </tr>
       
                              
@@ -244,6 +274,12 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                         </tbody>
         
                             </table>
+
+                          <div class="addItemArea">
+                                <button id="addRow" type="button">
+                            + Add Next Row 
+                        </button>
+                           </div>  
                         <table class="summaryTable">
       
                                 <tr>
@@ -272,18 +308,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                                 </tr>
       
                               </table>
-                        <div class="tableButtons">
-                                <button id="addRow" type="button">
-                            + Add Next Row 
-                        </button>
-        
-                        <button id="pdf-generate">
-                            📄 Download PDF
-                        </button>
-                        <button id="print-btn" onclick="window.print()"> 
-                            🖨 Print Bill 
-                        </button>
-                    </div>                  
+                 
                   
         
                     </div>
