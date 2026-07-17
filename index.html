@@ -50,9 +50,17 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
             🔍 <span>Search Bill</span>
         </button>
 
-      <button id="printBillBtn" type="button">
+        <button id="printBillBtn" type="button">
     🖨 <span>Print</span>
 </button>
+
+        <button
+            id="generateReceiptBtn"
+            type="button">
+        
+            🧾 <span>Generate Receipt</span>
+
+        </button>
       
         <button id="pdf-generate">
             📄 <span>Download PDF</span>
@@ -62,9 +70,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
 </div>
 
-
-  
-  <div class="page">
+ 
+<div class="page">
     
   
     <!--  ==================================================
@@ -277,8 +284,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
                           <div class="addItemArea">
                                 <button id="addRow" type="button">
-                            + Add Next Row 
-                        </button>
+                                    + Add Next Row 
+                                </button>
+                                  
                            </div>  
                         <table class="summaryTable">
       
@@ -340,7 +348,8 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
       
          </div>
   
-      <!--==================================================
+  
+     <!--==================================================
                           CUT LINE
       ===================================================-->
   
@@ -349,17 +358,16 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
               <span>✂ અહીંથી કાપો ✂</span>
   
           </div>
-      <!--==================================================
-                      DUPLICATE RECEIPT
-      ===================================================-->
   
            <!--==================================================
                     DUPLICATE RECEIPT
-==================================================-->
+            ==================================================-->
 
-<section class="duplicateReceipt">
+          <section class="duplicateReceipt" id="duplicateReceipt" hidden>
 
-    <!-- DUPLICATE HEADER -->
+  
+  
+          <!-- DUPLICATE HEADER -->
     <div class="duplicateHeader">
 
         <div class="duplicateCompany">
@@ -506,18 +514,15 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
     </div>
 
-</section>
+        </section>
 
     
-  </div>
-  <!-- ==========================================
-     SEARCH BILL MODAL
-========================================== -->
 
-<div
-    id="searchBillModal"
-    class="searchModalOverlay"
-    hidden>
+              <!-- ==========================================
+                 SEARCH BILL MODAL
+            ========================================== -->
+
+        <div id="searchBillModal" class="searchModalOverlay" hidden>
 
     <div class="searchModal">
 
@@ -575,6 +580,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
     </div>
 
+</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
