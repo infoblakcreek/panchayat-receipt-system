@@ -94,23 +94,16 @@ async function setInitialBillNumber(){
     const billNumber =
         await generateBillNumber();
 
-
-    const pavtiNumber =
-        await generatePavtiNumber();
-
-
     document
         .getElementById("billNo")
         .value =
         billNumber;
 
-
     document
         .getElementById("dPavtiNo")
         .value =
-        pavtiNumber;
-
-
+        "";
+  
     document
         .getElementById("dPavtiDate")
         .value =
@@ -492,6 +485,27 @@ function loadBillIntoForm(billData) {
         .value =
         billData.pavtiDate || "";
 
+    const duplicateReceipt =
+    document
+        .getElementById(
+            "duplicateReceipt"
+        );
+
+
+if(
+    billData.pavtiNo
+){
+
+    duplicateReceipt.hidden =
+        false;
+
+}else{
+
+    duplicateReceipt.hidden =
+        true;
+
+}
+
     document
         .getElementById("bankDetails")
         .value =
@@ -649,20 +663,10 @@ newBillBtn.addEventListener("click", async function () {
 
     const newBillNumber =
     await generateBillNumber();
-
-    const newPavtiNumber =
-    await generatePavtiNumber();
   
     // Put it in main bill
-    document
-        .getElementById("billNo")
-        .value =
-        newBillNumber;
-
-    document
-      .getElementById("dPavtiNo")
-      .value =
-      newPavtiNumber;
+    document.getElementById("billNo").value =newBillNumber;
+    document.getElementById("dPavtiNo").value ="";
 
     document.getElementById("billDate").value = "";
     document.getElementById("dPavtiDate").value = "";
@@ -678,6 +682,8 @@ newBillBtn.addEventListener("click", async function () {
     document.getElementById("grandTotal").value = "";
 
     document.getElementById("numberToGujaratiWords").value = "";
+
+    document .getElementById("duplicateReceipt")  .hidden =  true;
 
 
     // Remove all existing rows
@@ -946,6 +952,106 @@ async function generatePavtiNumber(){
 
 }
 
+// ==========================================
+// GENERATE RECEIPT BUTTON
+// ==========================================
+
+const generateReceiptBtn =
+    document.getElementById(
+        "generateReceiptBtn"
+    );
+
+
+generateReceiptBtn.addEventListener(
+    "click",
+    generateReceipt
+);
+
+
+async function generateReceipt(){
+
+    const billNumber =
+        document
+            .getElementById("billNo")
+            .value
+            .trim();
+
+
+    if(!billNumber){
+
+        alert(
+            "Please create a Bill Number first."
+        );
+
+        return;
+
+    }
+
+
+    const currentPavtiNumber =
+        document
+            .getElementById("dPavtiNo")
+            .value
+            .trim();
+
+
+    // Prevent generating a second number
+    if(currentPavtiNumber){
+
+        alert(
+            "Receipt has already been generated for this bill."
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+        const pavtiNumber =
+            await generatePavtiNumber();
+
+
+        document
+            .getElementById("dPavtiNo")
+            .value =
+            pavtiNumber;
+
+
+        // Automatically set today's receipt date
+        document
+            .getElementById("dPavtiDate")
+            .value =
+            new Date()
+                .toISOString()
+                .split("T")[0];
+
+        document
+            .getElementById("duplicateReceipt")
+            .hidden =
+            false;
+
+        alert(
+            "Receipt generated successfully!"
+        );
+
+
+    }catch(error){
+
+        console.error(
+            "Error generating receipt:",
+            error
+        );
+
+
+        alert(
+            "Unable to generate receipt."
+        );
+
+    }
+
+}
 /*==========================================
         BILL SYNC
 ==========================================*/
