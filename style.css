@@ -1144,7 +1144,37 @@ body{
     font-weight:bold;
 
 }
+/* ==========================================
+        DUPLICATE ADDRESS + PANCHAYAT
+========================================== */
 
+.duplicateAddressCell{
+
+    display:flex;
+
+    align-items:flex-end;
+
+    gap:6px;
+
+}
+
+
+.duplicateAddressCell #dVillage{
+
+    flex:1;
+
+    min-width:0;
+
+}
+
+
+.duplicateAddressCell .panchayatLabel{
+
+    white-space:nowrap;
+
+    font-weight:400 !important;
+
+}
 
 /*==============================
         TITLE
@@ -1288,15 +1318,18 @@ body{
     border-bottom:1px dotted #333;
 
 }
-/*==============================
-        CUSTOMER DETAILS
-===============================*/
+/*==========================================
+        DUPLICATE CUSTOMER DETAILS
+        MATCH MAIN CUSTOMER STYLE
+==========================================*/
 
 .duplicateCustomer{
 
+    width:100%;
+
     display:grid;
 
-    grid-template-columns:repeat(3,1fr);
+    grid-template-columns:repeat(3, 1fr);
 
     gap:10px;
 
@@ -1305,9 +1338,17 @@ body{
 }
 
 
-.duplicateCustomer div{
+.duplicateCustomer > div{
 
-    border-bottom:1px dashed #999;
+    display:flex;
+
+    align-items:flex-end;
+
+    gap:6px;
+
+    min-width:0;
+
+    border:none;
 
     padding-bottom:3px;
 
@@ -1316,18 +1357,32 @@ body{
 
 .duplicateCustomer label{
 
+    white-space:nowrap;
+
     font-size:12px;
 
     color:#1565C0;
 
     font-weight:600;
 
-    display:block;
-
 }
 
 
 .duplicateCustomer span{
+
+    flex:1;
+
+    min-width:0;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    white-space:nowrap;
+
+    border-bottom:1px dotted #333;
+
+    padding:3px 4px;
 
     font-size:14px;
 
@@ -2124,6 +2179,36 @@ body{
       body.showCutLine .cutLine {
         display: block !important;
     }
+
+  .duplicateAddressCell{
+
+    display:flex !important;
+
+    align-items:flex-end !important;
+
+    gap:4px !important;
+
+}
+
+
+.duplicateAddressCell #dVillage{
+
+    flex:1;
+
+    min-width:0;
+
+}
+
+
+.duplicateAddressCell .panchayatLabel{
+
+    white-space:nowrap;
+
+    font-size:8px !important;
+
+    font-weight:400 !important;
+
+}
 
 
 }
