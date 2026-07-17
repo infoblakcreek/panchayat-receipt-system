@@ -813,29 +813,73 @@ body{
 
     justify-content:flex-end;
 
+    align-items:center;
+
+    gap:10px;
+
     padding:14px 0 8px;
 
 }
+
 #addRow{
 
     background:#ffffff;
+
     color:#28a745;
-    border:solid;
-    border-color: #28a745;
-    padding:8px;
+
+    border:1px solid #28a745;
+
+    padding:8px 14px;
+
     border-radius:8px;
+
     cursor:pointer;
-    font-weight:600
+
+    font-weight:600;
+
+    font-family:'Poppins', sans-serif;
+
+    transition:all .2s ease;
 
 }
 
 #addRow:hover{
-    background:#218838;
+
+    background:#f0fff4;
+
+    transform:translateY(-1px);
+
 }
 
-#addRow:hover{
+#generateReceiptBtn{
 
-    opacity:.9;
+    background:#1565C0;
+
+    color:#ffffff;
+
+    border:1px solid #1565C0;
+
+    padding:8px 14px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    font-family:'Poppins', sans-serif;
+
+    transition:all .2s ease;
+
+}
+
+#generateReceiptBtn:hover{
+
+    background:#0D47A1;
+
+    border-color:#0D47A1;
+
+    transform:translateY(-1px);
 
 }
 /*==========================================
@@ -969,6 +1013,8 @@ body{
 
 .cutLine{
 
+    display:none;
+
     margin:30px 0;
 
     text-align:center;
@@ -994,6 +1040,12 @@ body{
     font-weight:600;
 
  }
+
+.showCutLine .cutLine{
+
+    display:block;
+
+}
  
 /*==================================================
         COMPACT DUPLICATE RECEIPT
@@ -1942,22 +1994,6 @@ body{
 
 
     /* =================================================
-       CUT LINE
-    ================================================= */
-
-    .cutLine {
-        margin: 3px 0 !important;
-        border-top-width: 1px !important;
-        font-size: 8px !important;
-    }
-
-    .cutLine span {
-        top: -8px !important;
-        padding: 0 4px !important;
-    }
-
-
-    /* =================================================
        DUPLICATE RECEIPT - VERY COMPACT
     ================================================= */
 
@@ -2084,5 +2120,10 @@ body{
         display:none !important;
 
     }
+
+      body.showCutLine .cutLine {
+        display: block !important;
+    }
+
 
 }
