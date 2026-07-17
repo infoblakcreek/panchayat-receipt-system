@@ -137,6 +137,230 @@
 }
 
 
+/* ==========================================
+   SEARCH BILL MODAL
+========================================== */
+
+.searchModalOverlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(0, 0, 0, 0.45);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 9999;
+
+    padding: 20px;
+
+}
+
+.searchModalOverlay[hidden] {
+    display: none;
+}
+
+
+.searchModal {
+
+    width: min(
+        440px,
+        100%
+    );
+
+    background: #ffffff;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0, 0, 0, 0.25);
+
+    overflow: hidden;
+
+    animation:
+        searchModalAppear
+        0.2s
+        ease-out;
+
+}
+
+
+.searchModalHeader {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 18px 22px;
+
+    border-bottom:
+        1px solid #e5e7eb;
+
+}
+
+
+.searchModalHeader h2 {
+
+    margin: 0;
+
+    font-size: 20px;
+
+}
+
+
+#closeSearchModal {
+
+    border: none;
+
+    background: transparent;
+
+    font-size: 28px;
+
+    cursor: pointer;
+
+    line-height: 1;
+
+}
+
+
+.searchModalBody {
+
+    padding: 24px 22px;
+
+}
+
+
+.searchModalBody label {
+
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-weight: 600;
+
+}
+
+
+#searchBillNumber {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 12px 14px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    outline: none;
+
+}
+
+
+#searchBillNumber:focus {
+
+    border-color: #2563eb;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(37, 99, 235, 0.12);
+
+}
+
+
+.searchBillMessage {
+
+    min-height: 20px;
+
+    margin: 10px 0 0;
+
+    font-size: 14px;
+
+}
+
+
+.searchModalFooter {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 10px;
+
+    padding: 16px 22px;
+
+    background: #f9fafb;
+
+}
+
+
+.searchModalFooter button {
+
+    padding: 10px 16px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+}
+
+
+#cancelSearchBtn {
+
+    background: #e5e7eb;
+
+}
+
+
+#confirmSearchBtn {
+
+    background: #2563eb;
+
+    color: #ffffff;
+
+}
+
+
+@keyframes searchModalAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(-10px)
+            scale(0.98);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
 
 /*==========================================
             GOOGLE FONTS
