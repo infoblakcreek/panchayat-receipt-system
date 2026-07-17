@@ -486,21 +486,16 @@ body{
     border-top:2px solid #1565C0;
 }
 
-/*==========================================
-            CUSTOMER DETAILS
-==========================================*/
+/* ==========================================
+        CUSTOMER DETAILS
+========================================== */
 
 .customerCard{
 
-    border:1px solid #1565C0;
-
-    border-radius:6px;
-
-    padding:8px;
-
-    margin:8px 0;
+    width:100%;
 
 }
+
 
 .customerTable{
 
@@ -510,50 +505,136 @@ body{
 
 }
 
+
 .customerTable td{
 
-    padding:4px 8px;
+    padding:8px 12px;
 
-    vertical-align:top;
+    vertical-align:bottom;
 
 }
+
 
 .customerTable label{
 
-    display:block;
-
-    color:#1565C0;
-
-    font-size:13px;
+    white-space:nowrap;
 
     font-weight:600;
 
-    margin-bottom:3px;
+    margin-right:6px;
 
 }
+
+
+/* ==========================================
+        LINE STYLE INPUTS
+========================================== */
 
 .customerTable input{
 
     width:100%;
 
-    height:30px;
+    border:none;
 
-    border:1px solid #ccc;
+    border-bottom:1px dotted #333;
 
-    border-radius:5px;
+    outline:none;
 
-    padding:4px 8px;
+    background:transparent;
 
-    font-size:13px;
+    padding:3px 4px;
 
-}
-
-.customerCard .row{
-
-grid-template-columns:1fr;
+    font-size:15px;
 
 }
 
+
+/* Remove browser focus box */
+
+.customerTable input:focus{
+
+    outline:none;
+
+    border-bottom:1px dotted #333;
+
+}
+
+.addressCell{
+
+    display:flex;
+
+    align-items:flex-end;
+
+    gap:8px;
+
+}
+
+
+.addressCell #village{
+
+    flex:1;
+
+    min-width:0;
+
+}
+
+
+.panchayatLabel{
+
+    white-space:nowrap;
+  font-weight:400 !important;
+
+}
+
+
+/* ==========================================
+        INLINE LABEL + LINE
+========================================== */
+
+.customerTable td{
+
+    white-space:nowrap;
+
+}
+
+
+.customerTable td input{
+
+    display:inline-block;
+
+    width:calc(100% - 70px);
+
+}
+
+
+/* Customer name gets more space */
+
+#customerName{
+
+    width:calc(100% - 60px);
+
+}
+
+
+/* Bill number and date */
+
+#billNo,
+#billDate{
+
+    width:calc(100% - 70px);
+
+}
+
+
+/* Placeholder styling */
+
+.customerTable input::placeholder{
+
+    color:#999;
+
+    opacity:1;
+
+}
 
 /*==========================================
             PROFESSIONAL BILL TABLE
@@ -642,7 +723,7 @@ grid-template-columns:1fr;
 
     background:transparent;
 
-    font-size:10px;
+    font-size:15px;
 
     text-align:center;
 
@@ -694,8 +775,11 @@ grid-template-columns:1fr;
 
     display:flex;
     justify-content:flex-end;
-    gap:15px;
+   
+
     padding:10px;
+    gap:15px;
+    
     background:#fafbfd;
 
 }
@@ -722,6 +806,16 @@ grid-template-columns:1fr;
     padding: 2px;
     background: transparent;
 }
+
+.addItemArea{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    padding:14px 0 8px;
+
+}
 #addRow{
 
     background:#ffffff;
@@ -739,40 +833,7 @@ grid-template-columns:1fr;
     background:#218838;
 }
 
-#pdf-generate{
-
-    background:#ffffff;
-    color:#007bff;
-    border:solid;
-    border-color: #007bff;
-    padding:8px;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:600
-}
-#pdf-generate:hover{
-    background:#0056b3;
-}
-
-#print-btn{
-
-    background:#ffffff;
-    color:#fd7e14;
-    border:solid;
-    border-color: #fd7e14;
-    padding:8px;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:600
-}
-
-#print-btn:hover{
-    background:#e66a00;
-}
-
-#addRow:hover,
-#pdf-generat:hover,
-#removeRow:hover{
+#addRow:hover{
 
     opacity:.9;
 
@@ -821,6 +882,8 @@ grid-template-columns:1fr;
     resize:none;
 
     border:2px solid #E3F2FD;
+
+    font-size:15px;
 
     border-radius:6px;
 
