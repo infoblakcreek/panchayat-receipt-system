@@ -125,8 +125,43 @@ saveBillBtn.addEventListener("click", saveBill);
 
 async function saveBill() {
 
-    // Collect all item rows
+    // Normal save should not show cut line
+
+    document.body.classList.remove(
+        "showCutLine"
+    );
+
+
+    try {
+
+        await saveCurrentBill();
+
+
+        alert(
+            "Bill saved successfully!"
+        );
+
+
+    } catch(error) {
+
+        console.error(
+            "Error saving bill:",
+            error
+        );
+
+
+        alert(
+            "Error saving bill. Please try again."
+        );
+
+    }
+
+}
+
+async function saveCurrentBill() {
+
     const items = [];
+
 
     document
         .querySelectorAll("#itemBody tr")
@@ -135,68 +170,105 @@ async function saveBill() {
             const item = {
 
                 description:
-                    row.querySelector(".description").value,
+                    row.querySelector(
+                        ".description"
+                    ).value,
 
                 pages:
-                    row.querySelector(".pages").value,
+                    row.querySelector(
+                        ".pages"
+                    ).value,
 
                 price:
-                    row.querySelector(".price").value,
+                    row.querySelector(
+                        ".price"
+                    ).value,
 
                 total:
-                    row.querySelector(".total").value
+                    row.querySelector(
+                        ".total"
+                    ).value
 
             };
+
 
             items.push(item);
 
         });
 
 
-    // Complete bill data
     const billData = {
 
         customerName:
-            document.getElementById("customerName").value,
+            document
+                .getElementById(
+                    "customerName"
+                ).value,
 
         village:
-            document.getElementById("village").value,
+            document
+                .getElementById(
+                    "village"
+                ).value,
 
         taluka:
-            document.getElementById("taluka").value,
+            document
+                .getElementById(
+                    "taluka"
+                ).value,
 
         district:
-            document.getElementById("district").value,
+            document
+                .getElementById(
+                    "district"
+                ).value,
 
         billNo:
-            document.getElementById("billNo").value,
+            document
+                .getElementById(
+                    "billNo"
+                ).value,
 
         billDate:
-            document.getElementById("billDate").value,
+            document
+                .getElementById(
+                    "billDate"
+                ).value,
 
         pavtiNo:
-            document.getElementById("dPavtiNo").value,
+            document
+                .getElementById(
+                    "dPavtiNo"
+                ).value,
 
         pavtiDate:
-            document.getElementById("dPavtiDate").value,
+            document
+                .getElementById(
+                    "dPavtiDate"
+                ).value,
 
         bankDetails:
-            document.getElementById("bankDetails").value,
+            document
+                .getElementById(
+                    "bankDetails"
+                ).value,
 
         grandTotal:
-            document.getElementById("grandTotal").value,
+            document
+                .getElementById(
+                    "grandTotal"
+                ).value,
 
         amountInWords:
-            document.getElementById(
-                "numberToGujaratiWords"
-            ).value,
+            document
+                .getElementById(
+                    "numberToGujaratiWords"
+                ).value,
 
         items: items
 
     };
 
-
-  try {
 
     const billNumber =
         billData.billNo.trim();
@@ -204,9 +276,9 @@ async function saveBill() {
 
     if (!billNumber) {
 
-        alert("Bill number is missing.");
-
-        return;
+        throw new Error(
+            "Bill number is missing."
+        );
 
     }
 
@@ -218,38 +290,17 @@ async function saveBill() {
 
             ...billData,
 
-            createdAt:
-                firebase.firestore.FieldValue.serverTimestamp()
+            updatedAt:
+                firebase.firestore
+                    .FieldValue
+                    .serverTimestamp()
 
         });
 
 
-    alert("Bill saved successfully!");
-
-
-    console.log(
-        "Bill saved successfully:",
-        billData
-    );
-
-
-} catch (error) {
-
-    console.error(
-        "Error saving bill:",
-        error
-    );
-
-
-    alert(
-        "Error saving bill. Please try again."
-    );
+    return billData;
 
 }
-
-}
-
-
 // ==========================================
 // SEARCH BILL MODAL
 // ==========================================
@@ -499,10 +550,18 @@ if(
     duplicateReceipt.hidden =
         false;
 
+    document.body.classList.add(
+        "showCutLine"
+    );
+
 }else{
 
     duplicateReceipt.hidden =
         true;
+
+    document.body.classList.remove(
+        "showCutLine"
+    );
 
 }
 
@@ -683,6 +742,8 @@ newBillBtn.addEventListener("click", async function () {
 
     document.getElementById("numberToGujaratiWords").value = "";
 
+    document.body.classList.remove("showCutLine");
+
     document .getElementById("duplicateReceipt")  .hidden =  true;
 
 
@@ -725,19 +786,48 @@ newBillBtn.addEventListener("click", async function () {
 // ==========================================
 
 const printBillBtn =
-    document.getElementById("printBillBtn");
+    document.getElementById(
+        "printBillBtn"
+    );
 
 
 printBillBtn.addEventListener(
     "click",
-    function(){
+    async function(){
 
-        window.print();
+        try {
+
+            // Automatically save latest bill
+
+            await saveCurrentBill();
+
+
+            console.log(
+                "Bill automatically saved before printing."
+            );
+
+
+            // Now open print dialog
+
+            window.print();
+
+
+        } catch(error) {
+
+            console.error(
+                "Error saving bill before print:",
+                error
+            );
+
+
+            alert(
+                "Bill could not be saved. Printing cancelled."
+            );
+
+        }
 
     }
 );
-
-
 
 function calculateRow(input){
 
@@ -1032,6 +1122,8 @@ async function generateReceipt(){
             .hidden =
             false;
 
+        document.body.classList.add("showCutLine");
+
         alert(
             "Receipt generated successfully!"
         );
@@ -1117,7 +1209,9 @@ async function generatePDF() {
 
     if (!billNumber) {
 
-        alert("Please enter Bill Number first.");
+        alert(
+            "Please enter Bill Number first."
+        );
 
         return;
 
@@ -1125,80 +1219,155 @@ async function generatePDF() {
 
 
     const billPage =
-        document.querySelector(".page");
+        document.querySelector(
+            ".page"
+        );
 
 
     const buttons =
-        document.querySelector(".tableButtons");
-
-
-    // Hide buttons temporarily
-    buttons.style.display = "none";
-
-
-    const canvas =
-        await html2canvas(
-            billPage,
-            {
-                scale: 2,
-                useCORS: true,
-                backgroundColor: "#ffffff"
-            }
+        document.querySelector(
+            ".tableButtons"
         );
 
 
-    const imageData =
-        canvas.toDataURL("image/png");
+    try {
 
+        // Show cut line temporarily
 
-    const {
-        jsPDF
-    } = window.jspdf;
-
-
-    const pdf =
-        new jsPDF(
-            "p",
-            "mm",
-            "a4"
+        document.body.classList.add(
+            "showCutLine"
         );
 
 
-    const pageWidth =
-        pdf.internal.pageSize.getWidth();
+        // Hide buttons temporarily
+
+        buttons.style.display =
+            "none";
 
 
-    const pageHeight =
-        pdf.internal.pageSize.getHeight();
+        // Generate image
+
+        const canvas =
+            await html2canvas(
+
+                billPage,
+
+                {
+
+                    scale:2,
+
+                    useCORS:true,
+
+                    backgroundColor:
+                        "#ffffff"
+
+                }
+
+            );
 
 
-    const imageWidth =
-        pageWidth;
+        const imageData =
+            canvas.toDataURL(
+                "image/png"
+            );
 
 
-    const imageHeight =
-        canvas.height *
-        imageWidth /
-        canvas.width;
+        const {
+            jsPDF
+        } =
+            window.jspdf;
 
 
-    pdf.addImage(
-        imageData,
-        "PNG",
-        0,
-        0,
-        imageWidth,
-        imageHeight
-    );
+        const pdf =
+            new jsPDF(
+
+                "p",
+
+                "mm",
+
+                "a4"
+
+            );
 
 
-    pdf.save(
-        `Bill-${billNumber}.pdf`
-    );
+        const pageWidth =
+            pdf.internal.pageSize
+                .getWidth();
 
 
-    // Show buttons again
-    buttons.style.display = "flex";
+        const imageWidth =
+            pageWidth;
+
+
+        const imageHeight =
+            canvas.height *
+            imageWidth /
+            canvas.width;
+
+
+        pdf.addImage(
+
+            imageData,
+
+            "PNG",
+
+            0,
+
+            0,
+
+            imageWidth,
+
+            imageHeight
+
+        );
+
+
+        pdf.save(
+
+            `Bill-${billNumber}.pdf`
+
+        );
+
+
+    }
+
+    catch(error){
+
+        console.error(
+
+            "Error generating PDF:",
+
+            error
+
+        );
+
+
+        alert(
+
+            "Unable to generate PDF."
+
+        );
+
+    }
+
+
+    finally {
+
+        // Hide cut line again
+
+        document.body.classList.remove(
+
+            "showCutLine"
+
+        );
+
+
+        // Show buttons again
+
+        buttons.style.display =
+            "flex";
+
+    }
 
 }
 
