@@ -1,4 +1,4 @@
-/* ==========================================
+/* =========================================
         PROFESSIONAL APP TOOLBAR
 ========================================== */
 
@@ -1835,338 +1835,70 @@ body{
 
 }
 
-/*==============================
-        PRINT A4
-==============================*/
 
 /* =====================================================
-   COMPACT ONE-PAGE A4 PRINT
+        A4 PRINT LAYOUT
 ===================================================== */
 
-@page {
-    size: A4 portrait;
-    margin: 3mm;
+@page{
+
+    size:A4 portrait;
+
+    margin:3mm;
+
 }
 
 
-@media print {
+@media print{
 
     html,
-    body {
-        width: 210mm;
-        height: 297mm;
-        margin: 0 !important;
-        padding: 0 !important;
-        background: white !important;
-        overflow: hidden;
-    }
+    body{
 
-    .page {
-        width: 204mm;
-        height: 291mm;
-        margin: 0 auto !important;
-        padding: 3mm !important;
-        box-shadow: none !important;
-        overflow: hidden;
-    }
+        width:210mm;
 
-    /* Hide buttons */
-    .tableButtons,
-    button {
-        display: none !important;
+        height:297mm;
+
+        margin:0 !important;
+
+        padding:0 !important;
+
+        background:#ffffff !important;
+
+        overflow:hidden;
+
     }
 
 
-    /* =================================================
-       MAIN BILL
-    ================================================= */
+    /* ==========================================
+            A4 PAGE
+    ========================================== */
 
-    .mainBillWrapper {
-        width: 100% !important;
-        height: auto !important;
-        padding: 4px !important;
-        border-radius: 10px;
-        display: flex;
-        justify-content: center;
-    }
+    .page{
 
-    .billContainer {
-        width: 70% !important;
-        max-width: 70% !important;
-        padding: 4px !important;
-        justify-content: center;
-    }
+        width:204mm;
 
+        height:290mm !important;
 
-    /* =================================================
-       HEADER - VERY COMPACT
-    ================================================= */
+        overflow:hidden !important;
 
-    .billHeader {
-        margin-bottom: 3px !important;
-    }
+        margin:0 auto !important;
 
-    .ganesh {
-        font-size: 10px !important;
-        margin-bottom: 2px !important;
-    }
+        padding:3mm !important;
 
-    .companyCell h1 {
-        font-size: 14px !important;
-        margin: 0 !important;
-    }
+        box-sizing:border-box;
 
-    .companyCell h2 {
-        font-size: 9px !important;
-        margin: 1px 0 !important;
-    }
+        background:#ffffff;
 
-    .companyCell p {
-        font-size: 8px !important;
-        line-height: 1.1 !important;
-        margin: 1px 0 !important;
-    }
+        display:flex;
 
-    .phoneCell {
-        font-size: 12px !important;
-    }
+        flex-direction:column;
 
-    .headerLine {
-        margin-top: 2px !important;
-        border-top-width: 1px !important;
     }
 
 
-    /* =================================================
-       CUSTOMER DETAILS
-    ================================================= */
-
-    .customerCard {
-        padding: 3px !important;
-        margin: 3px 0 !important;
-        border-radius: 3px !important;
-    }
-
-    .customerTable td {
-        padding: 2px 4px !important;
-    }
-
-    .customerTable label {
-        font-size: 8px !important;
-        margin-bottom: 1px !important;
-    }
-
-    .customerTable input {
-        height: 18px !important;
-        font-size: 9px !important;
-        padding: 1px 4px !important;
-        border-radius: 2px !important;
-    }
-
-
-    /* =================================================
-       ITEMS TABLE
-    ================================================= */
-
-    .tableCard {
-        margin: 3px 0 !important;
-        border-radius: 4px !important;
-    }
-
-    #billTable th {
-        padding: 3px !important;
-        font-size: 9px !important;
-    }
-
-    #billTable td {
-        padding: 0 !important;
-        height: 20px !important;
-    }
-
-    #billTable input {
-        min-height: 18px !important;
-        height: 18px !important;
-        padding: 1px !important;
-        font-size: 8px !important;
-    }
-
-    .description {
-        min-height: 18px !important;
-        height: 18px !important;
-        font-size: 8px !important;
-        padding: 1px !important;
-    }
-
-    .delete-btn {
-        width: 18px !important;
-        height: 18px !important;
-        font-size: 9px !important;
-    }
-
-
-    /* =================================================
-       SUMMARY
-    ================================================= */
-
-    .summaryTable {
-        margin-top: 2px !important;
-    }
-
-    .summaryTable td {
-        padding: 2px !important;
-    }
-
-    .summaryTable label {
-        font-size: 8px !important;
-        margin-bottom: 1px !important;
-    }
-
-    .summaryTable textarea,
-    .summaryTable input {
-        height: 25px !important;
-        font-size: 10px !important;
-        padding: 2px !important;
-    }
-
-
-    /* =================================================
-       MAIN BILL FOOTER
-    ================================================= */
-
-    .signatureSection {
-        margin-top: 2px !important;
-    }
-
-    .duplicateFooter {
-        margin-top: 3px !important;
-        padding-top: 3px !important;
-        font-size: 9px !important;
-    }
-
-    .duplicateFooter h3 {
-        font-size: 9px !important;
-    }
-
-
-    /* =================================================
-       DUPLICATE RECEIPT - VERY COMPACT
-    ================================================= */
-
-    .duplicateReceipt {
-        width: 100% !important;
-        padding: 4px !important;
-        border-radius: 4px !important;
-    }
-
-    .duplicateHeader {
-        padding-bottom: 3px !important;
-        border-bottom-width: 1px !important;
-    }
-
-    .duplicateCompany h4 {
-        font-size: 11px !important;
-        margin: 0 !important;
-    }
-
-    .duplicateCompany p {
-        font-size: 8px !important;
-        margin: 1px 0 !important;
-    }
-
-    .duplicatePhone {
-        padding: 3px 6px !important;
-        font-size: 9px !important;
-    }
-
-    .receiptTitle {
-        font-size: 12px !important;
-        margin: 3px 0 !important;
-    }
-
-  .duplicateReceiptHeader {
-    width: 100%;
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-.duplicateReceiptHeader > div {
-    display: flex !important;
-    align-items: center;
-    gap: 5px;
-    white-space: nowrap;
-}
-
-
-.duplicateCustomer {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.duplicateCustomer > div {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    white-space: nowrap;
-}
-
-.duplicateCustomer label {
-    font-weight: 600;
-}
-
-.duplicateCustomer span {
-    min-width: 80px;
-    padding: 2px 5px;
-    border-bottom: 1px solid #333;
-}
-
-    .receiptBody {
-        margin-top: 3px !important;
-        padding-top: 3px !important;
-    }
-
-    .receiptBody p {
-        font-size: 9px !important;
-        margin: 2px 0 !important;
-        line-height: 1.2 !important;
-    }
-
-    .amountWordsReceipt {
-        padding: 3px 5px !important;
-        margin: 3px 0 !important;
-    }
-
-    .amountWordsReceipt label {
-        font-size: 8px !important;
-    }
-
-    #dAmountWords {
-        font-size: 9px !important;
-    }
-
-    .paymentDetails {
-        gap: 5px !important;
-        margin-top: 3px !important;
-    }
-
-    .paymentDetails label {
-        font-size: 8px !important;
-    }
-
-    #bankDetails {
-        height: 16px !important;
-        font-size: 8px !important;
-        line-height: 15px !important;
-    }
-
-    .duplicateReceipt .duplicateFooter {
-        margin-top: 4px !important;
-        padding-top: 3px !important;
-        font-size: 8px !important;
-    }
+    /* ==========================================
+            HIDE APP CONTROLS
+    ========================================== */
 
     .topBar,
     .tableButtons,
@@ -2176,39 +1908,698 @@ body{
 
     }
 
-      body.showCutLine .cutLine {
-        display: block !important;
+
+    /* ==========================================
+            MAIN BILL - 70%
+    ========================================== */
+
+    .mainBillWrapper{
+
+        width:100% !important;
+
+        padding:4px !important;
+
+        margin:0 !important;
+
+        background:#ffffff !important;
+
+        display:flex;
+
+        justify-content:center;
+
+        flex:0 0 auto;
+
     }
 
-  .duplicateAddressCell{
+
+    .billContainer{
+
+        width:70% !important;
+
+        max-width:70% !important;
+
+        padding:6px !important;
+
+        margin:0 !important;
+
+        box-sizing:border-box;
+
+        overflow:hidden;
+
+    }
+
+
+    /* ==========================================
+            MAIN BILL CONTENT
+    ========================================== */
+
+    .billHeader{
+
+        margin-bottom:6px !important;
+
+    }
+
+
+    .ganesh{
+
+        font-size:13px !important;
+
+        margin-bottom:4px !important;
+
+    }
+
+
+    .companyCell h1{
+
+        font-size:20px !important;
+
+    }
+
+
+    .companyCell h2{
+
+        font-size:13px !important;
+
+    }
+
+
+    .companyCell p{
+
+        font-size:12px !important;
+
+    }
+
+
+    .phoneCell{
+
+        font-size:18px !important;
+
+    }
+
+
+    .customerTable td{
+
+        padding:8px 12px !important;
+
+    }
+
+
+    .customerTable label{
+
+        font-size:inherit !important;
+
+    }
+
+
+    .customerTable input{
+
+        font-size:15px !important;
+
+        height:auto !important;
+
+        padding:3px 4px !important;
+
+    }
+
+
+    /* ==========================================
+            BILL TABLE
+    ========================================== */
+
+    .tableCard{
+
+        width:100% !important;
+
+        margin:10px 0 !important;
+
+        overflow:hidden !important;
+
+    }
+
+
+    #billTable{
+
+        width:100% !important;
+
+        table-layout:fixed;
+
+    }
+
+
+    #billTable th{
+
+        padding:6px !important;
+
+        font-size:15px !important;
+
+    }
+
+
+    #billTable td{
+
+        padding:2px !important;
+
+        height:auto !important;
+
+        vertical-align:top;
+
+    }
+
+
+    #billTable input{
+
+        width:100% !important;
+
+        min-height:28px !important;
+
+        height:auto !important;
+
+        font-size:15px !important;
+
+        padding:2px !important;
+
+        box-sizing:border-box;
+
+    }
+
+
+    .description{
+
+        width:100% !important;
+
+        min-height:50px !important;
+
+        height:auto !important;
+
+        font-size:15px !important;
+
+        padding:2px !important;
+
+        box-sizing:border-box;
+
+        overflow:hidden;
+
+        resize:none;
+
+    }
+
+
+    /* ==========================================
+            SUMMARY
+    ========================================== */
+
+    .summaryTable{
+
+        width:100% !important;
+
+        margin-top:8px !important;
+
+    }
+
+
+    .summaryTable textarea,
+    .summaryTable input{
+
+        width:100% !important;
+
+        height:55px !important;
+
+        font-size:15px !important;
+
+        box-sizing:border-box;
+
+    }
+
+
+    /* ==========================================
+            SIGNATURE
+    ========================================== */
+
+    .signatureSection{
+
+        margin-top:5px !important;
+
+    }
+
+
+    /* ==========================================
+            CUT LINE
+    ========================================== */
+
+    .cutLine{
+
+    flex:0 0 auto;
+
+    margin:20px 0 !important;
+
+}
+
+
+    body.showCutLine .cutLine{
+
+        display:block !important;
+
+    }
+
+
+    /* ==========================================
+            DUPLICATE RECEIPT
+    ========================================== */
+
+    .duplicateReceipt{
+
+    width:100% !important;
+
+    height:auto !important;
+
+    min-height:0 !important;
+
+    max-height:none !important;
+
+    box-sizing:border-box;
+
+    overflow:hidden !important;
+
+    margin:0 !important;
+
+    padding:3px !important;
+
+    flex:0 0 auto;
+
+    page-break-inside:avoid !important;
+
+    break-inside:avoid !important;
+
+}
+
+
+    /* ==========================================
+            DUPLICATE HEADER
+    ========================================== */
+
+    .duplicateHeader{
+
+    width:100%;
 
     display:flex !important;
 
-    align-items:flex-end !important;
+    align-items:center;
 
-    gap:4px !important;
+    justify-content:space-between;
+
+    gap:5px;
+
+    padding-bottom:2px !important;
+
+    box-sizing:border-box;
 
 }
 
 
-.duplicateAddressCell #dVillage{
+    .duplicateCompany{
 
-    flex:1;
+        min-width:0;
+
+        flex:1;
+
+    }
+
+
+.duplicateCompany h2{
+
+    font-size:18px !important;
+
+    line-height:1 !important;
+
+    margin:0 !important;
+
+}
+
+
+.duplicateCompany h4{
+
+    font-size:11px !important;
+
+    line-height:1 !important;
+
+    margin:1px 0 !important;
+
+}
+
+
+.duplicateCompany p{
+
+    font-size:9px !important;
+
+    line-height:1 !important;
+
+    margin:1px 0 !important;
+
+}
+
+
+.duplicatePhone{
+
+    padding:2px 5px !important;
+
+    font-size:10px !important;
+
+}    }
+
+
+    /* ==========================================
+            RECEIPT TITLE
+    ========================================== */
+
+     .receiptTitle{
+
+    font-size:14px !important;
+
+    line-height:1 !important;
+
+    margin:3px 0 !important;
+
+}
+
+
+    /* ==========================================
+            RECEIPT NUMBER + DATE
+    ========================================== */
+
+    .duplicateReceiptHeader{
+
+    width:100% !important;
+
+    display:grid !important;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:8px;
+
+    margin:3px 0 !important;
+
+    box-sizing:border-box;
+
+}
+
+
+    .duplicateReceiptHeader > div{
 
     min-width:0;
 
+    display:flex !important;
+
+    align-items:center !important;
+
+    gap:4px;
+
+    line-height:1 !important;
+
+}
+
+.duplicateReceiptHeader label{
+
+    font-size:9px !important;
+
+    line-height:1 !important;
+
 }
 
 
-.duplicateAddressCell .panchayatLabel{
+      #dPavtiNo,
+#dPavtiDate{
+
+    width:100% !important;
+
+    min-width:0 !important;
+
+    height:17px !important;
+
+    padding:1px 3px !important;
+
+    font-size:10px !important;
+
+    line-height:1 !important;
+
+    box-sizing:border-box;
+
+}
+
+
+    /* ==========================================
+            DUPLICATE CUSTOMER
+    ========================================== */
+
+    .duplicateCustomer{
+
+    width:100% !important;
+
+    display:grid !important;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:4px !important;
+
+    margin:2px 0 !important;
+
+    box-sizing:border-box;
+
+}
+
+
+    .duplicateCustomer > div{
+
+    min-width:0;
+
+    gap:3px !important;
+
+    padding-bottom:1px !important;
+
+}
+
+      .duplicateCustomer label{
+
+    font-size:9px !important;
+
+    line-height:1 !important;
+
+}
+
+    .duplicateCustomer span{
+
+    min-width:0 !important;
+
+    padding:1px 3px !important;
+
+    font-size:10px !important;
+
+    line-height:1 !important;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
 
     white-space:nowrap;
 
-    font-size:8px !important;
+}
 
-    font-weight:400 !important;
+
+    /* ==========================================
+            DUPLICATE BODY
+    ========================================== */
+
+    .receiptBody{
+
+    width:100%;
+
+    margin-top:2px !important;
+
+    padding-top:2px !important;
+
+    box-sizing:border-box;
 
 }
 
+
+    .receiptBody p{
+
+    font-size:10px !important;
+
+    line-height:1.15 !important;
+
+    margin:2px 0 !important;
+
+}
+
+
+    .amountWordsReceipt{
+
+    width:100%;
+
+    padding:2px 4px !important;
+
+    margin:2px 0 !important;
+
+    line-height:1.1 !important;
+
+    box-sizing:border-box;
+
+}
+
+      .amountWordsReceipt label{
+
+    font-size:9px !important;
+
+    line-height:1 !important;
+
+}
+
+
+#dAmountWords{
+
+    font-size:10px !important;
+
+    line-height:1.1 !important;
+
+    overflow-wrap:break-word;
+
+    word-break:break-word;
+
+}
+
+
+    /* ==========================================
+            PAYMENT DETAILS
+    ========================================== */
+
+    .paymentDetails{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center !important;
+
+    gap:4px !important;
+
+    margin-top:2px !important;
+
+    height:16px !important;
+
+}
+
+.paymentDetails label{
+
+    font-size:9px !important;
+
+    line-height:1 !important;
+
+}
+
+
+    #bankDetails{
+
+    min-width:0;
+
+    width:100%;
+
+    height:15px !important;
+
+    padding:0 2px !important;
+
+    font-size:9px !important;
+
+    line-height:14px !important;
+
+    box-sizing:border-box;
+
+}
+
+
+    /* ==========================================
+            FOOTER
+    ========================================== */
+
+    .duplicateFooter{
+
+        width:100%;
+
+        box-sizing:border-box;
+
+    }
+
+    #billTable{
+
+        width:100%;
+    
+        table-layout:fixed;
+    
+    }
+
+        #billTable th:nth-child(1),
+      #billTable td:nth-child(1){
+      
+          width:8%;
+      
+      }
+      
+      #billTable th:nth-child(2),
+      #billTable td:nth-child(2){
+      
+          width:42%;
+      
+      }
+      
+      #billTable th:nth-child(3),
+      #billTable td:nth-child(3){
+      
+          width:12%;
+      
+      }
+      
+      #billTable th:nth-child(4),
+      #billTable td:nth-child(4){
+      
+          width:15%;
+      
+      }
+      
+      #billTable th:nth-child(5),
+      #billTable td:nth-child(5){
+      
+          width:15%;
+        
+        }
+        
+        #billTable th:nth-child(6),
+        #billTable td:nth-child(6){
+        
+            width:8%;
+        
+        }
+
+      .duplicateReceipt .duplicateFooter{
+
+    width:100%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:1px !important;
+
+    padding-top:1px !important;
+
+    border-top:1px solid #ccc;
+
+    font-size:8px !important;
+
+    line-height:1 !important;
+
+    min-height:12px !important;
+
+}
 
 }
