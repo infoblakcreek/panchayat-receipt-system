@@ -353,55 +353,65 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                       DUPLICATE RECEIPT
       ===================================================-->
   
-          <section class="duplicateReceipt">
-  
-              <div class="duplicateHeader">
-  
-                  <div class="duplicateCompany">
-  
-                      <h4>બીપીનભાઈ ઈશ્વરલાલ પટેલ</h4>
-  
-                      <p>
-                          પંચાયત તથા રેવન્યુનું કોમ્પ્યુટરાઇઝ્ડ કામકાજ
-                      </p>
-  
-                  </div>
-  
-                  <div class="duplicatePhone">
-  
-                      📞 9998010986
-  
-                  </div>
-  
-              </div>
-  
-              <div class="receiptTitle">
-  
-                  રસીદ
-  
-              </div>
-  
-              <div class="duplicateCustomer">
-                     <div>
-  
-                  <label>બિલ નંબર: </label>
-  
-                  <span id="dBillNo" readonly></span>
-  
-              </div>
-  
-  
-              <div>
-  
-                  <label>તારીખ: </label>
-  
-                  <span id="dBillDate"></span>
-  
-              </div>
-  
+           <!--==================================================
+                    DUPLICATE RECEIPT
+==================================================-->
+
+<section class="duplicateReceipt">
+
+    <!-- DUPLICATE HEADER -->
+    <div class="duplicateHeader">
+
+        <div class="duplicateCompany">
+
+            <h4>બીપીનભાઈ ઈશ્વરલાલ પટેલ</h4>
+
+            <p>
+                પંચાયત તથા રેવન્યુનું કોમ્પ્યુટરાઇઝ્ડ કામકાજ
+            </p>
+
+        </div>
+
+        <div class="duplicatePhone">
+            📞 9998010986
+        </div>
+
+    </div>
+
+
+    <!-- RECEIPT TITLE -->
+    <div class="receiptTitle">
+        રસીદ
+    </div>
+
+
+    <!-- RECEIPT NUMBER AND DATE -->
+    <div class="duplicateReceiptHeader">
+
+          <div>
+      
+              <label>પાવતી નંબર:</label>
+
+            <input
+                    type="text"
+                    id="dPavtiNo"
+                    readonly>
+            
           </div>
-  
-              <div class="duplicateCustomer">
+      
+          <div>
+      
+              <label>તારીખ:</label>
+
+              <input type="date" id="dPavtiDate">
+              
+          </div>
+
+    </div>
+
+
+    <!-- CUSTOMER NAME -->
+    <div class="duplicateCustomer">
   
               <div class="fullWidth">
   
@@ -410,103 +420,93 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                   <span id="dCustomerName"></span>
   
               </div>
-  
-          </div>
-  
-              <div class="duplicateCustomer">
-  
-              <div>
-  
-                  <label>સરનામું: </label>
-  
-                  <span id="dVillage"></span>
-  
-              </div>
-  
-              <div>
-  
-                  <label>તાલુકો: </label>
-  
-                  <span id="dTaluka"></span>
-  
-              </div>
-  
-              <div>
-  
-                  <label>જિલ્લો: </label>
-  
-                  <span id="dDistrict"></span>
-  
-              </div>
-  
-          </div>
-  
-          <div class="receiptBody">
-  
-              <p>
-  
-                  આપના તરફથી મળેલ રકમ
-                <strong><span id="dGrandTotal"></span></strong>
-  
-                  (અંકે)
-  
-              </p>
-  
-              <div class="amountWordsReceipt">
-  
-                  <label>રકમ શબ્દોમાં</label>
-  
-                  <span id="dAmountWords"></span>
-  
-              </div>
-  
-              <div class="paymentDetails">
-  
-                  <div>
-  
-                      <label>બાકી</label>
-  
-                      <span id="dBaki"></span>
-  
-                  </div>
-  
-                  <div>
-  
-                      <label>રોકડા</label>
-  
-                      <span id="dRokada"></span>
-  
-                  </div>
-  
-              </div>
-  
-              <div class="paymentDetails">
+      </div>
 
-                    <label for="bankDetails">બેંક / ચેકની વિગત :</label>
-                
-                    <textarea id="bankDetails"></textarea>
-              
-              </div>
-  
-          </div>
-  
-          <div class="duplicateFooter">
-  
-              <div>
-  
-                  ગ્રાહકની સહી
-  
-              </div>
-  
-              <div>
-  
-                  ફોર : બીપીનભાઈ ઈશ્વરલાલ પટેલ
-  
-              </div>
-  
-          </div>
-  
-          </section>
+
+    <!-- CUSTOMER LOCATION -->
+    <div class="duplicateCustomer">
+
+        <div>
+            <label>સરનામું:</label>
+            <span id="dVillage"></span>
+        </div>
+
+        <div>
+            <label>તાલુકો:</label>
+            <span id="dTaluka"></span>
+        </div>
+
+        <div>
+            <label>જિલ્લો:</label>
+            <span id="dDistrict"></span>
+        </div>
+
+    </div>
+
+
+    <!-- RECEIPT BODY -->
+    <div class="receiptBody">
+
+        <p>
+            આપના તરફથી મળેલ રકમ
+            <strong>
+                <span id="dGrandTotal"></span>
+            </strong>
+            (અંકે)
+        </p>
+
+
+        <div class="amountWordsReceipt">
+
+            <label>રકમ શબ્દોમાં</label>
+
+            <span id="dAmountWords"></span>
+
+        </div>
+
+
+        <div class="paymentDetails">
+
+            <div>
+                <label>બાકી</label>
+                <span id="dBaki"></span>
+            </div>
+
+            <div>
+                <label>રોકડા</label>
+                <span id="dRokada"></span>
+            </div>
+
+        </div>
+
+
+        <div class="paymentDetails bankDetailsRow">
+
+            <label for="bankDetails">
+                બેંક / ચેકની વિગત:
+            </label>
+
+            <textarea id="bankDetails"></textarea>
+
+        </div>
+
+    </div>
+
+
+    <!-- DUPLICATE FOOTER -->
+    <div class="duplicateFooter">
+
+        <div>
+            ગ્રાહકની સહી
+        </div>
+
+        <div>
+            ફોર : બીપીનભાઈ ઈશ્વરલાલ પટેલ
+        </div>
+
+    </div>
+
+</section>
 
     
   </div>
