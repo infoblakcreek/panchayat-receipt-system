@@ -89,10 +89,14 @@ async function generateBillNumber() {
 // SET INITIAL BILL
 // ==========================================
 
-async function setInitialBillNumber() {
+async function setInitialBillNumber(){
 
     const billNumber =
         await generateBillNumber();
+
+
+    const pavtiNumber =
+        await generatePavtiNumber();
 
 
     document
@@ -101,7 +105,18 @@ async function setInitialBillNumber() {
         billNumber;
 
 
-    // Sync the new bill number to duplicate receipt
+    document
+        .getElementById("dPavtiNo")
+        .value =
+        pavtiNumber;
+
+
+    document
+        .getElementById("dPavtiDate")
+        .value =
+        "";
+
+
     syncBills();
 
 }
@@ -165,6 +180,12 @@ async function saveBill() {
 
         billDate:
             document.getElementById("billDate").value,
+
+        pavtiNo:
+            document.getElementById("dPavtiNo").value,
+
+        pavtiDate:
+            document.getElementById("dPavtiDate").value,
 
         bankDetails:
             document.getElementById("bankDetails").value,
@@ -461,6 +482,15 @@ function loadBillIntoForm(billData) {
         .value =
         billData.billDate || "";
 
+    document
+        .getElementById("dPavtiNo")
+        .value =
+        billData.pavtiNo || "";
+
+    document
+        .getElementById("dPavtiDate")
+        .value =
+        billData.pavtiDate || "";
 
     document
         .getElementById("bankDetails")
@@ -620,6 +650,8 @@ newBillBtn.addEventListener("click", async function () {
     const newBillNumber =
     await generateBillNumber();
 
+    const newPavtiNumber =
+    await generatePavtiNumber();
   
     // Put it in main bill
     document
@@ -627,7 +659,13 @@ newBillBtn.addEventListener("click", async function () {
         .value =
         newBillNumber;
 
+    document
+      .getElementById("dPavtiNo")
+      .value =
+      newPavtiNumber;
+
     document.getElementById("billDate").value = "";
+    document.getElementById("dPavtiDate").value = "";
 
 
     // Clear bank details
@@ -657,8 +695,6 @@ newBillBtn.addEventListener("click", async function () {
 
 
     // Clear duplicate receipt
-
-    document.getElementById("dBillDate").textContent = "";
 
     document.getElementById("dCustomerName").textContent = "";
 
@@ -825,6 +861,91 @@ function updateSerialNumbers() {
 }
 
 
+// ==========================================
+// GENERATE PAVTI NUMBER
+// ==========================================
+
+async function generatePavtiNumber(){
+
+    const currentYear =
+        new Date()
+            .getFullYear();
+
+
+    const counterRef =
+        db
+            .collection("settings")
+            .doc(
+                `receiptCounter_${currentYear}`
+            );
+
+
+    const pavtiNumber =
+        await db.runTransaction(
+
+            async function(transaction){
+
+                const counterDoc =
+                    await transaction.get(
+                        counterRef
+                    );
+
+
+                let lastNumber = 0;
+
+
+                if(
+                    counterDoc.exists
+                ){
+
+                    lastNumber =
+                        counterDoc
+                            .data()
+                            .lastNumber || 0;
+
+                }
+
+
+                const nextNumber =
+                    lastNumber + 1;
+
+
+                transaction.set(
+
+                    counterRef,
+
+                    {
+
+                        lastNumber:
+                            nextNumber,
+
+                        year:
+                            currentYear
+
+                    },
+
+                    {
+
+                        merge:true
+
+                    }
+
+                );
+
+
+                return nextNumber;
+
+            }
+
+        );
+
+
+    return `${currentYear}-${String(
+        pavtiNumber
+    ).padStart(6,"0")}`;
+
+}
+
 /*==========================================
         BILL SYNC
 ==========================================*/
@@ -834,9 +955,6 @@ function syncBills(){
     document.getElementById("dCustomerName").innerText =
         document.getElementById("customerName").value;
 
-    document.getElementById("dBillDate").innerText =
-        document.getElementById("billDate").value;
-
     document.getElementById("dVillage").innerText =
         document.getElementById("village").value;
 
@@ -845,9 +963,6 @@ function syncBills(){
 
     document.getElementById("dDistrict").innerText =
         document.getElementById("district").value;
-
-    document.getElementById("dBillNo").innerText =
-        document.getElementById("billNo").value;
 
     document.getElementById("dGrandTotal").innerText =
         document.getElementById("grandTotal").value;
@@ -864,11 +979,9 @@ function syncBills(){
 const syncFields = [
 
     "customerName",
-    "billDate",
     "village",
     "taluka",
     "district",
-    "billNo",
     "grandTotal",
     "numberToGujaratiWords"
 ];
