@@ -237,14 +237,96 @@ async function saveBill() {
 
 
 // ==========================================
-// SEARCH BILL
+// SEARCH BILL MODAL
 // ==========================================
 
 const searchBillBtn =
-    document.getElementById("searchBillBtn");
+    document.getElementById(
+        "searchBillBtn"
+    );
 
 
+const searchBillModal =
+    document.getElementById(
+        "searchBillModal"
+    );
+
+
+const closeSearchModal =
+    document.getElementById(
+        "closeSearchModal"
+    );
+
+
+const cancelSearchBtn =
+    document.getElementById(
+        "cancelSearchBtn"
+    );
+
+
+const confirmSearchBtn =
+    document.getElementById(
+        "confirmSearchBtn"
+    );
+
+
+const searchBillNumber =
+    document.getElementById(
+        "searchBillNumber"
+    );
+
+
+const searchBillMessage =
+    document.getElementById(
+        "searchBillMessage"
+    );
+
+
+// Open modal
 searchBillBtn.addEventListener(
+    "click",
+    function() {
+
+        searchBillModal.hidden =
+            false;
+
+        searchBillNumber.value =
+            "";
+
+        searchBillMessage.textContent =
+            "";
+
+        searchBillNumber.focus();
+
+    }
+);
+
+
+// Close modal
+function closeSearchBillModal() {
+
+    searchBillModal.hidden =
+        true;
+
+}
+
+
+closeSearchModal.addEventListener(
+    "click",
+    closeSearchBillModal
+);
+
+
+cancelSearchBtn.addEventListener(
+    "click",
+    closeSearchBillModal
+);
+
+// ==========================================
+// SEARCH BILL FROM FIREBASE
+// ==========================================
+
+confirmSearchBtn.addEventListener(
     "click",
     searchBill
 );
@@ -253,21 +335,23 @@ searchBillBtn.addEventListener(
 async function searchBill() {
 
     const billNumber =
-        prompt(
-            "Enter Bill Number:"
-        );
+        searchBillNumber
+            .value
+            .trim();
 
 
-    // User pressed Cancel
     if (!billNumber) {
+
+        searchBillMessage.textContent =
+            "Please enter a bill number.";
 
         return;
 
     }
 
 
-    const cleanBillNumber =
-        billNumber.trim();
+    searchBillMessage.textContent =
+        "Searching...";
 
 
     try {
@@ -275,15 +359,14 @@ async function searchBill() {
         const billDocument =
             await db
                 .collection("bills")
-                .doc(cleanBillNumber)
+                .doc(billNumber)
                 .get();
 
 
         if (!billDocument.exists) {
 
-            alert(
-                "Bill not found."
-            );
+            searchBillMessage.textContent =
+                "Bill not found.";
 
             return;
 
@@ -294,16 +377,12 @@ async function searchBill() {
             billDocument.data();
 
 
-        console.log(
-            "Bill found:",
-            billData
-        );
-
-
-        // Load bill data into the form
         loadBillIntoForm(
             billData
         );
+
+
+        closeSearchBillModal();
 
 
         alert(
@@ -319,13 +398,27 @@ async function searchBill() {
         );
 
 
-        alert(
-            "Error searching bill. Please try again."
-        );
+        searchBillMessage.textContent =
+            "Error searching bill.";
 
     }
 
 }
+searchBillNumber.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key ===
+            "Enter"
+        ) {
+
+            searchBill();
+
+        }
+
+    }
+);
 
 // ==========================================
 // LOAD BILL INTO FORM
