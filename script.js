@@ -678,6 +678,24 @@ newBillBtn.addEventListener("click", async function () {
 
 });
 
+// ==========================================
+// PRINT BILL
+// ==========================================
+
+const printBillBtn =
+    document.getElementById("printBillBtn");
+
+
+printBillBtn.addEventListener(
+    "click",
+    function(){
+
+        window.print();
+
+    }
+);
+
+
 
 function calculateRow(input){
 
