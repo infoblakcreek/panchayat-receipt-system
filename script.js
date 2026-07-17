@@ -785,6 +785,7 @@ newBillBtn.addEventListener("click", async function () {
 // PRINT BILL
 // ==========================================
 
+
 const printBillBtn =
     document.getElementById(
         "printBillBtn"
@@ -793,41 +794,38 @@ const printBillBtn =
 
 printBillBtn.addEventListener(
     "click",
-    async function(){
+    function(){
 
-        try {
-
-            // Automatically save latest bill
-
-            await saveCurrentBill();
+        // Open print dialog immediately
+        window.print();
 
 
-            console.log(
-                "Bill automatically saved before printing."
-            );
+        // Save bill in background
+        saveCurrentBill()
+            .then(function(){
 
+                console.log(
+                    "Bill automatically saved after printing."
+                );
 
-            // Now open print dialog
+            })
+            .catch(function(error){
 
-            window.print();
+                console.error(
+                    "Error automatically saving bill:",
+                    error
+                );
 
-
-        } catch(error) {
-
-            console.error(
-                "Error saving bill before print:",
-                error
-            );
-
-
-            alert(
-                "Bill could not be saved. Printing cancelled."
-            );
-
-        }
+            });
 
     }
 );
+
+
+
+// ==========================================
+//CALCULATE TOTAL AND GRAND TOTAL
+// ==========================================
 
 function calculateRow(input){
 
@@ -1150,23 +1148,122 @@ async function generateReceipt(){
 
 function syncBills(){
 
-    document.getElementById("dCustomerName").innerText =
-        document.getElementById("customerName").value;
+    const customerName =
+        document.getElementById("customerName");
 
-    document.getElementById("dVillage").innerText =
-        document.getElementById("village").value;
+    const village =
+        document.getElementById("village");
 
-    document.getElementById("dTaluka").innerText =
-        document.getElementById("taluka").value;
+    const taluka =
+        document.getElementById("taluka");
 
-    document.getElementById("dDistrict").innerText =
-        document.getElementById("district").value;
+    const district =
+        document.getElementById("district");
 
-    document.getElementById("dGrandTotal").innerText =
-        document.getElementById("grandTotal").value;
+    const grandTotal =
+        document.getElementById("grandTotal");
 
-    document.getElementById("dAmountWords").innerText =
-        document.getElementById("numberToGujaratiWords").value;
+    const amountWords =
+        document.getElementById(
+            "numberToGujaratiWords"
+        );
+
+
+    const dCustomerName =
+        document.getElementById(
+            "dCustomerName"
+        );
+
+    const dVillage =
+        document.getElementById(
+            "dVillage"
+        );
+
+    const dTaluka =
+        document.getElementById(
+            "dTaluka"
+        );
+
+    const dDistrict =
+        document.getElementById(
+            "dDistrict"
+        );
+
+    const dGrandTotal =
+        document.getElementById(
+            "dGrandTotal"
+        );
+
+    const dAmountWords =
+        document.getElementById(
+            "dAmountWords"
+        );
+
+
+    if(
+        dCustomerName &&
+        customerName
+    ){
+
+        dCustomerName.innerText =
+            customerName.value;
+
+    }
+
+
+    if(
+        dVillage &&
+        village
+    ){
+
+        dVillage.innerText =
+            village.value;
+
+    }
+
+
+    if(
+        dTaluka &&
+        taluka
+    ){
+
+        dTaluka.innerText =
+            taluka.value;
+
+    }
+
+
+    if(
+        dDistrict &&
+        district
+    ){
+
+        dDistrict.innerText =
+            district.value;
+
+    }
+
+
+    if(
+        dGrandTotal &&
+        grandTotal
+    ){
+
+        dGrandTotal.innerText =
+            grandTotal.value;
+
+    }
+
+
+    if(
+        dAmountWords &&
+        amountWords
+    ){
+
+        dAmountWords.innerText =
+            amountWords.value;
+
+    }
 
 }
 
