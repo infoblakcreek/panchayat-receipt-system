@@ -277,6 +277,45 @@ async function saveCurrentBill() {
 
     }
 
+  const billReference =
+    db
+        .collection("bills")
+        .doc(billNumber);
+
+
+const existingBill =
+    await billReference.get();
+
+
+const dataToSave = {
+
+    ...billData,
+
+    updatedAt:
+        firebase.firestore
+            .FieldValue
+            .serverTimestamp()
+
+};
+
+
+if (!existingBill.exists) {
+
+    dataToSave.createdAt =
+        firebase.firestore
+            .FieldValue
+            .serverTimestamp();
+
+}
+
+
+await billReference.set(
+    dataToSave,
+    {
+        merge: true
+    }
+);
+
 
     await db
         .collection("bills")
