@@ -199,75 +199,70 @@ async function saveCurrentBill() {
 
     const billData = {
 
-        customerName:
-            document
-                .getElementById(
-                    "customerName"
-                ).value,
+    customerName:
+        document
+            .getElementById(
+                "customerName"
+            ).value,
 
-        village:
-            document
-                .getElementById(
-                    "village"
-                ).value,
+    mobileNumber:
+        document
+            .getElementById(
+                "mobileNumber"
+            ).value.trim(),
 
-        taluka:
-            document
-                .getElementById(
-                    "taluka"
-                ).value,
+    village:
+        document
+            .getElementById(
+                "village"
+            ).value,
 
-        district:
-            document
-                .getElementById(
-                    "district"
-                ).value,
+    taluka:
+        document
+            .getElementById(
+                "taluka"
+            ).value,
 
-        billNo:
-            document
-                .getElementById(
-                    "billNo"
-                ).value,
+    district:
+        document
+            .getElementById(
+                "district"
+            ).value,
 
-        billDate:
-            document
-                .getElementById(
-                    "billDate"
-                ).value,
+    billNo:
+        document
+            .getElementById(
+                "billNo"
+            ).value,
 
-        pavtiNo:
-            document
-                .getElementById(
-                    "dPavtiNo"
-                ).value,
+    billDate:
+        document
+            .getElementById(
+                "billDate"
+            ).value,
 
-        pavtiDate:
-            document
-                .getElementById(
-                    "dPavtiDate"
-                ).value,
+     paymentDetails:
+          document
+              .getElementById(
+                  "paymentDetails"
+              ).value
+              .trim(),
 
-        bankDetails:
-            document
-                .getElementById(
-                    "bankDetails"
-                ).value,
+    grandTotal:
+        document
+            .getElementById(
+                "grandTotal"
+            ).value,
 
-        grandTotal:
-            document
-                .getElementById(
-                    "grandTotal"
-                ).value,
+    amountInWords:
+        document
+            .getElementById(
+                "numberToGujaratiWords"
+            ).value,
 
-        amountInWords:
-            document
-                .getElementById(
-                    "numberToGujaratiWords"
-                ).value,
+    items: items
 
-        items: items
-
-    };
+};
 
 
     const billNumber =
@@ -516,6 +511,21 @@ function loadBillIntoForm(billData) {
 
 
     document
+        .getElementById(
+            "mobileNumber"
+        )
+        .value =
+            billData.mobileNumber || "";
+
+
+    document
+          .getElementById(
+              "paymentDetails"
+          )
+          .value =
+          billData.paymentDetails || "";
+
+    document
         .getElementById("billNo")
         .value =
         billData.billNo || "";
@@ -564,12 +574,6 @@ if(
     );
 
 }
-
-    document
-        .getElementById("bankDetails")
-        .value =
-        billData.bankDetails || "";
-
 
     document
         .getElementById("grandTotal")
@@ -730,10 +734,11 @@ newBillBtn.addEventListener("click", async function () {
     document.getElementById("billDate").value = "";
     document.getElementById("dPavtiDate").value = "";
 
+    document.getElementById("mobileNumber").value ="";
 
     // Clear bank details
 
-    document.getElementById("bankDetails").value = "";
+    document.getElementById("paymentDetails").value = "";
 
 
     // Clear amount fields
@@ -796,11 +801,14 @@ printBillBtn.addEventListener(
     "click",
     function(){
 
-        // Open print dialog immediately
+        generatePrintableBills();
+
+        document.body.classList.add(
+            "printGeneratedBills"
+        );
+
         window.print();
 
-
-        // Save bill in background
         saveCurrentBill()
             .then(function(){
 
@@ -821,6 +829,16 @@ printBillBtn.addEventListener(
     }
 );
 
+window.addEventListener(
+    "afterprint",
+    function(){
+
+        document.body.classList.remove(
+            "printGeneratedBills"
+        );
+
+    }
+);
 
 
 // ==========================================
@@ -867,6 +885,7 @@ function calculateGrandTotal(){
 
 function addItemRow() {
 
+    
     const tbody = document.getElementById("itemBody");
 
     const rowCount = tbody.rows.length + 1;
@@ -1056,87 +1075,153 @@ generateReceiptBtn.addEventListener(
 );
 
 
-async function generateReceipt(){
+function generateReceipt() {
 
-    const billNumber =
-        document
-            .getElementById("billNo")
-            .value
-            .trim();
+    try {
+
+        generatePrintableBills();
+
+        /* ==========================================
+                GET FORM VALUES
+        ========================================== */
+
+        const customerName =
+            document.getElementById("customerName").value.trim();
+
+        const village =
+            document.getElementById("village").value.trim();
+
+        const taluka =
+            document.getElementById("taluka").value.trim();
+
+        const district =
+            document.getElementById("district").value.trim();
+
+        const mobileNumber =
+            document.getElementById("mobileNumber").value.trim();
+
+        const billNo =
+            document.getElementById("billNo").value.trim();
+
+        const billDate =
+            document.getElementById("billDate").value;
+
+        const paymentDetails =
+            document.getElementById("paymentDetails").value.trim();
+
+        const grandTotal =
+            document.getElementById("grandTotal").value;
+
+        const amountWords =
+            document.getElementById("numberToGujaratiWords").value;
 
 
-    if(!billNumber){
+        /* ==========================================
+                CREATE RECEIPT NUMBER
+        ========================================== */
 
-        alert(
-            "Please create a Bill Number first."
+        const receiptNumber =
+            "P-" + billNo;
+
+
+        /* ==========================================
+                MAIN GENERATED BILL
+        ========================================== */
+
+        document.getElementById("pCustomerName").textContent =
+            customerName;
+
+        document.getElementById("pVillage").textContent =
+            village;
+
+        document.getElementById("pTaluka").textContent =
+            taluka;
+
+        document.getElementById("pDistrict").textContent =
+            district;
+
+        document.getElementById("pMobileNumber").textContent =
+            mobileNumber;
+
+        document.getElementById("pBillNo").textContent =
+            billNo;
+
+        document.getElementById("pBillDate").textContent =
+            billDate;
+
+        document.getElementById("pAmountWords").textContent =
+            amountWords;
+
+        document.getElementById("pGrandTotal").textContent =
+            grandTotal;
+
+        document.getElementById("pPaymentDetails").textContent =
+            paymentDetails;
+
+
+        /* ==========================================
+                DUPLICATE RECEIPT
+        ========================================== */
+
+        document.getElementById("dPavtiNo").value =
+            receiptNumber;
+
+        document.getElementById("dPavtiDate").value =
+            billDate;
+
+
+        document.getElementById("dCustomerName").textContent =
+            customerName;
+
+        document.getElementById("dVillage").textContent =
+            village;
+
+        document.getElementById("dTaluka").textContent =
+            taluka;
+
+        document.getElementById("dDistrict").textContent =
+            district;
+
+        document.getElementById("dGrandTotal").textContent =
+            grandTotal;
+
+        document.getElementById("dAmountWords").textContent =
+            amountWords;
+
+        document.getElementById("dPaymentDetails").textContent =
+            paymentDetails;
+
+
+        /* ==========================================
+                SHOW GENERATED RECEIPT PAGE
+        ========================================== */
+
+        document.body.classList.add(
+            "receiptGeneratedMode"
         );
 
-        return;
-
-    }
-
-
-    const currentPavtiNumber =
-        document
-            .getElementById("dPavtiNo")
-            .value
-            .trim();
-
-
-    // Prevent generating a second number
-    if(currentPavtiNumber){
-
-        alert(
-            "Receipt has already been generated for this bill."
-        );
-
-        return;
-
-    }
-
-
-    try{
-
-        const pavtiNumber =
-            await generatePavtiNumber();
-
 
         document
-            .getElementById("dPavtiNo")
-            .value =
-            pavtiNumber;
+            .getElementById("printableBills")
+            .style.display = "flex";
 
 
-        // Automatically set today's receipt date
-        document
-            .getElementById("dPavtiDate")
-            .value =
-            new Date()
-                .toISOString()
-                .split("T")[0];
-
-        document
-            .getElementById("duplicateReceipt")
-            .hidden =
-            false;
-
-        document.body.classList.add("showCutLine");
-
-        alert(
-            "Receipt generated successfully!"
+        window.scrollTo(
+            0,
+            0
         );
 
 
-    }catch(error){
+    } catch (error) {
 
         console.error(
             "Error generating receipt:",
             error
         );
 
-
         alert(
-            "Unable to generate receipt."
+            "Error generating receipt: " +
+            error.message
         );
 
     }
@@ -1200,6 +1285,26 @@ function syncBills(){
         );
 
 
+    const paymentDetails =
+    document.getElementById(
+        "paymentDetails"
+    );
+
+    const dPaymentDetails =
+        document.getElementById(
+            "dPaymentDetails"
+        );
+
+      if (
+          dPaymentDetails &&
+          paymentDetails
+      ) {
+      
+          dPaymentDetails.innerText =
+              paymentDetails.value;
+      
+      }
+  
     if(
         dCustomerName &&
         customerName
@@ -1278,7 +1383,9 @@ const syncFields = [
     "taluka",
     "district",
     "grandTotal",
-    "numberToGujaratiWords"
+    "numberToGujaratiWords",
+    "paymentDetails"
+
 ];
 
 syncFields.forEach(function(id){
@@ -1469,5 +1576,181 @@ async function generatePDF() {
 }
 
 
+// ==========================================
+// GENERATE PRINT TABLES
+// ==========================================
+
+function generatePrintableBills() {
+
+    /*
+    ==========================================
+        MAIN BILL DETAILS
+    ==========================================
+    */
+
+    document.getElementById(
+        "pCustomerName"
+    ).textContent =
+        document.getElementById(
+            "customerName"
+        ).value;
+
+
+    document.getElementById(
+        "pBillNo"
+    ).textContent =
+        document.getElementById(
+            "billNo"
+        ).value;
+
+
+    document.getElementById(
+        "pVillage"
+    ).textContent =
+        document.getElementById(
+            "village"
+        ).value;
+
+
+    document.getElementById(
+        "pTaluka"
+    ).textContent =
+        document.getElementById(
+            "taluka"
+        ).value;
+
+
+    document.getElementById(
+        "pDistrict"
+    ).textContent =
+        document.getElementById(
+            "district"
+        ).value;
+
+
+    document.getElementById(
+        "pBillDate"
+    ).textContent =
+        document.getElementById(
+            "billDate"
+        ).value;
+
+      document.getElementById(
+        "pMobileNumber"
+    ).textContent =
+        document.getElementById(
+            "mobileNumber"
+        ).value;
+
+
+    document.getElementById(
+        "pAmountWords"
+    ).textContent =
+        document.getElementById(
+            "numberToGujaratiWords"
+        ).value;
+
+
+    document.getElementById(
+        "pGrandTotal"
+    ).textContent =
+        document.getElementById(
+            "grandTotal"
+        ).value;
+
+
+    document.getElementById(
+        "pPaymentDetails"
+    ).textContent =
+        document.getElementById(
+            "paymentDetails"
+        ).value;
+
+
+    /*
+    ==========================================
+        CREATE MAIN BILL ITEM ROWS
+    ==========================================
+    */
+
+    const printItems =
+        document.getElementById(
+            "printMainItems"
+        );
+
+
+    printItems.innerHTML = "";
+
+
+    document
+        .querySelectorAll(
+            "#itemBody tr"
+        )
+        .forEach(function(row) {
+
+          const printRow = document.createElement("tr");
+          
+            const srno =
+                row.querySelector(
+                    ".srno"
+                ).value;
+
+
+            const description =
+                row.querySelector(
+                    ".description"
+                ).value;
+
+
+            const pages =
+                row.querySelector(
+                    ".pages"
+                ).value;
+
+
+            const price =
+                row.querySelector(
+                    ".price"
+                ).value;
+
+
+            const total =
+                row.querySelector(
+                    ".total"
+                ).value;
+
+
+            printRow.innerHTML = `
+
+                <td>
+                    ${srno}
+                </td>
+
+                <td class="printDescription">
+                    ${description}
+                </td>
+
+                <td>
+                    ${pages}
+                </td>
+
+                <td>
+                    ₹ ${price}
+                </td>
+
+                <td>
+                    ₹ ${total}
+                </td>
+
+            `;
+
+
+            printItems.appendChild(
+                printRow
+            );
+
+        });
+
+}
 
 setInitialBillNumber();
