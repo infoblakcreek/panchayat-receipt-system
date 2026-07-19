@@ -317,22 +317,7 @@ await billReference.set(
 );
 
 
-    await db
-        .collection("bills")
-        .doc(billNumber)
-        .set({
-
-            ...billData,
-
-            updatedAt:
-                firebase.firestore
-                    .FieldValue
-                    .serverTimestamp()
-
-        });
-
-
-    return billData;
+return dataToSave;
 
 }
 // ==========================================
