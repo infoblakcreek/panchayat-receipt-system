@@ -1,6 +1,53 @@
-/* =========================================
+/* =========================================     
+        GOOGLE FONTS
+===================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+
+
+/* =====================================================
+        GLOBAL RESET
+===================================================== */
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+html{
+
+    -webkit-print-color-adjust:exact;
+
+    print-color-adjust:exact;
+
+}
+
+
+body{
+
+    margin:0;
+
+    padding:5px;
+
+    background:#e5e5e5;
+
+    font-family:
+        'Poppins',
+        'Noto Sans Gujarati',
+        sans-serif;
+
+}
+
+
+/* =====================================================
         PROFESSIONAL APP TOOLBAR
-========================================== */
+===================================================== */
 
 .topBar{
 
@@ -27,8 +74,6 @@
 }
 
 
-/* APP TITLE */
-
 .appTitle{
 
     display:flex;
@@ -48,8 +93,6 @@
 }
 
 
-/* BUTTON GROUP */
-
 .topActions{
 
     display:flex;
@@ -60,8 +103,6 @@
 
 }
 
-
-/* ALL BUTTONS SAME SIZE */
 
 .topActions button{
 
@@ -87,7 +128,7 @@
 
     color:#333;
 
-    font-family:'Poppins', sans-serif;
+    font-family:'Poppins',sans-serif;
 
     font-size:12px;
 
@@ -95,12 +136,10 @@
 
     cursor:pointer;
 
-    transition:all .2s ease;
+    transition:.2s ease;
 
 }
 
-
-/* HOVER */
 
 .topActions button:hover{
 
@@ -115,380 +154,380 @@
 }
 
 
-/* MOBILE */
+/* =====================================================
+        SEARCH MODAL
+===================================================== */
 
-@media(max-width:1100px){
+.searchModalOverlay{
 
-    .topBar{
-        flex-direction:column;
-        gap:10px;
-        align-items:stretch;
-    }
+    position:fixed;
 
-    .appTitle{
-        justify-content:center;
-    }
+    inset:0;
 
-    .topActions{
-        justify-content:center;
-        flex-wrap:wrap;
-    }
+    z-index:9999;
 
-}
+    display:flex;
 
+    align-items:center;
 
-/* ==========================================
-   SEARCH BILL MODAL
-========================================== */
+    justify-content:center;
 
-.searchModalOverlay {
+    padding:20px;
 
-    position: fixed;
-
-    inset: 0;
-
-    background:
-        rgba(0, 0, 0, 0.45);
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    z-index: 9999;
-
-    padding: 20px;
-
-}
-
-.searchModalOverlay[hidden] {
-    display: none;
-}
-
-
-.searchModal {
-
-    width: min(
-        440px,
-        100%
-    );
-
-    background: #ffffff;
-
-    border-radius: 14px;
-
-    box-shadow:
-        0 20px 60px
-        rgba(0, 0, 0, 0.25);
-
-    overflow: hidden;
-
-    animation:
-        searchModalAppear
-        0.2s
-        ease-out;
+    background:rgba(0,0,0,.45);
 
 }
 
 
-.searchModalHeader {
+.searchModalOverlay[hidden]{
 
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    padding: 18px 22px;
-
-    border-bottom:
-        1px solid #e5e7eb;
+    display:none;
 
 }
 
 
-.searchModalHeader h2 {
+.searchModal{
 
-    margin: 0;
+    width:min(440px,100%);
 
-    font-size: 20px;
+    background:#ffffff;
 
-}
+    border-radius:14px;
 
+    overflow:hidden;
 
-#closeSearchModal {
+    box-shadow:0 20px 60px rgba(0,0,0,.25);
 
-    border: none;
-
-    background: transparent;
-
-    font-size: 28px;
-
-    cursor: pointer;
-
-    line-height: 1;
+    animation:searchModalAppear .2s ease-out;
 
 }
 
 
-.searchModalBody {
+.searchModalHeader{
 
-    padding: 24px 22px;
+    display:flex;
 
-}
+    align-items:center;
 
+    justify-content:space-between;
 
-.searchModalBody label {
+    padding:18px 22px;
 
-    display: block;
-
-    margin-bottom: 8px;
-
-    font-weight: 600;
+    border-bottom:1px solid #e5e7eb;
 
 }
 
 
-#searchBillNumber {
-
-    width: 100%;
-
-    box-sizing: border-box;
-
-    padding: 12px 14px;
-
-    border: 1px solid #d1d5db;
-
-    border-radius: 8px;
-
-    font-size: 16px;
-
-    outline: none;
-
-}
-
-
-#searchBillNumber:focus {
-
-    border-color: #2563eb;
-
-    box-shadow:
-        0 0 0 3px
-        rgba(37, 99, 235, 0.12);
-
-}
-
-
-.searchBillMessage {
-
-    min-height: 20px;
-
-    margin: 10px 0 0;
-
-    font-size: 14px;
-
-}
-
-
-.searchModalFooter {
-
-    display: flex;
-
-    justify-content: flex-end;
-
-    gap: 10px;
-
-    padding: 16px 22px;
-
-    background: #f9fafb;
-
-}
-
-
-.searchModalFooter button {
-
-    padding: 10px 16px;
-
-    border: none;
-
-    border-radius: 8px;
-
-    cursor: pointer;
-
-    font-weight: 600;
-
-}
-
-
-#cancelSearchBtn {
-
-    background: #e5e7eb;
-
-}
-
-
-#confirmSearchBtn {
-
-    background: #2563eb;
-
-    color: #ffffff;
-
-}
-
-
-@keyframes searchModalAppear {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(-10px)
-            scale(0.98);
-
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-
-    }
-
-}
-
-
-/*==========================================
-            GOOGLE FONTS
-==========================================*/
-
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-/*==============================
-        PAGE
-==============================*/
-html{
-
-    -webkit-print-color-adjust:exact;
-    print-color-adjust:exact;
-
-}
-
-body{
+.searchModalHeader h2{
 
     margin:0;
-    padding:5px;
-    background:#e5e5e5;
-    font-family:'Poppins','Noto Sans Gujarati',sans-serif;
+
+    font-size:20px;
 
 }
 
 
-/*==============================
-        MAIN BILL
-==============================*/
+#closeSearchModal{
 
-.mainBillWrapper{
+    border:none;
+
+    background:transparent;
+
+    font-size:28px;
+
+    line-height:1;
+
+    cursor:pointer;
+
+}
+
+
+.searchModalBody{
+
+    padding:24px 22px;
+
+}
+
+
+.searchModalBody label{
+
+    display:block;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+}
+
+
+#searchBillNumber{
+
     width:100%;
-    margin:0;
-    display:block;  
-    background:white;
-    padding:10px;
-    border-radius:10px;
+
+    padding:12px 14px;
+
+    border:1px solid #d1d5db;
+
+    border-radius:8px;
+
+    outline:none;
+
+    font-size:16px;
+
 }
 
-.billContainer{
-    width:100%;
-    padding:10px;
-    border-radius:10px;
-    box-shadow:none;
-    border:2px solid #1565C0;
+
+#searchBillNumber:focus{
+
+    border-color:#2563eb;
+
+    box-shadow:0 0 0 3px rgba(37,99,235,.12);
+
 }
+
+
+.searchBillMessage{
+
+    min-height:20px;
+
+    margin-top:10px;
+
+    font-size:14px;
+
+}
+
+
+.searchModalFooter{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:10px;
+
+    padding:16px 22px;
+
+    background:#f9fafb;
+
+}
+
+
+.searchModalFooter button{
+
+    padding:10px 16px;
+
+    border:none;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+}
+
+
+#cancelSearchBtn{
+
+    background:#e5e7eb;
+
+}
+
+
+#confirmSearchBtn{
+
+    background:#2563eb;
+
+    color:#ffffff;
+
+}
+
+
+@keyframes searchModalAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-10px) scale(.98);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0) scale(1);
+
+    }
+
+}
+
+
+/* =====================================================
+        FORM PAGE
+===================================================== */
 
 .page{
+
     width:210mm;
+
     min-height:297mm;
-    margin:0 auto;
+
+    margin:20px auto;
+
     padding:5mm;
-    background:#fff;
-    box-sizing:border-box;
+
+    background:#ffffff;
+
+    border-radius:10px;
+
 }
-/*==========================================
-            APP HEADER
-==========================================*/
+
+
+.mainBillWrapper{
+
+    width:100%;
+
+    padding:10px;
+
+    background:#ffffff;
+
+    border-radius:10px;
+
+}
+
+
+.billContainer{
+
+    width:100%;
+
+    padding:10px;
+
+    background:#ffffff;
+
+    border:2px solid #1565C0;
+
+    border-radius:10px;
+
+}
+
+
+/* =====================================================
+        FORM HEADER
+===================================================== */
 
 .billHeader{
+
     margin-bottom:6px;
+
 }
+
 
 .ganesh{
-    text-align:center;
-    color:#D32F2F;
-    font-size:13px;
-    font-weight:bold;
+
     margin-bottom:4px;
+
+    color:#D32F2F;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    text-align:center;
+
 }
+
 
 .headerTable{
+
     width:100%;
+
     border-collapse:collapse;
+
 }
+
 
 .headerTable td{
-    vertical-align:top;
+
     padding:2px 4px;
+
+    vertical-align:top;
+
 }
+
 
 .companyCell{
+
     width:82%;
+
 }
+
 
 .phoneCell{
+
     width:18%;
-    text-align:right;
-    vertical-align:middle;
-    white-space:nowrap;
+
     color:#1565C0;
+
     font-size:18px;
+
     font-weight:700;
+
+    text-align:right;
+
+    vertical-align:middle;
+
+    white-space:nowrap;
+
 }
+
 
 .companyCell h1{
-    font-size:20px;
-    color:#1565C0;
+
     margin:0;
+
+    color:#1565C0;
+
+    font-size:20px;
+
 }
+
 
 .companyCell h2{
-    font-size:13px;
-    color:#444;
+
     margin:2px 0;
+
+    color:#444;
+
+    font-size:13px;
+
 }
+
 
 .companyCell p{
-    font-size:12px;
+
     margin:1px 0;
+
+    font-size:12px;
+
 }
+
 
 .headerLine{
+
     margin-top:4px;
+
     border:none;
+
     border-top:2px solid #1565C0;
+
 }
 
-/* ==========================================
-        CUSTOMER DETAILS
-========================================== */
+
+/* =====================================================
+        CUSTOMER DETAILS FORM
+===================================================== */
 
 .customerCard{
 
@@ -512,27 +551,29 @@ body{
 
     vertical-align:bottom;
 
+    white-space:nowrap;
+
 }
 
 
 .customerTable label{
 
+    margin-right:6px;
+
     white-space:nowrap;
 
     font-weight:600;
 
-    margin-right:6px;
-
 }
 
 
-/* ==========================================
-        LINE STYLE INPUTS
-========================================== */
-
 .customerTable input{
 
-    width:100%;
+    width:calc(100% - 70px);
+
+    padding:3px 4px;
+
+    background:transparent;
 
     border:none;
 
@@ -540,24 +581,28 @@ body{
 
     outline:none;
 
-    background:transparent;
-
-    padding:3px 4px;
-
     font-size:15px;
 
 }
 
 
-/* Remove browser focus box */
-
 .customerTable input:focus{
-
-    outline:none;
 
     border-bottom:1px dotted #333;
 
+    outline:none;
+
 }
+
+
+.customerTable input::placeholder{
+
+    color:#999;
+
+    opacity:1;
+
+}
+
 
 .addressCell{
 
@@ -582,32 +627,11 @@ body{
 .panchayatLabel{
 
     white-space:nowrap;
-  font-weight:400 !important;
+
+    font-weight:400 !important;
 
 }
 
-
-/* ==========================================
-        INLINE LABEL + LINE
-========================================== */
-
-.customerTable td{
-
-    white-space:nowrap;
-
-}
-
-
-.customerTable td input{
-
-    display:inline-block;
-
-    width:calc(100% - 70px);
-
-}
-
-
-/* Customer name gets more space */
 
 #customerName{
 
@@ -616,9 +640,8 @@ body{
 }
 
 
-/* Bill number and date */
-
 #billNo,
+
 #billDate{
 
     width:calc(100% - 70px);
@@ -626,186 +649,90 @@ body{
 }
 
 
-/* Placeholder styling */
+#mobileNumber{
 
-.customerTable input::placeholder{
-
-    color:#999;
-
-    opacity:1;
+    width:100%;
 
 }
 
-/*==========================================
-            PROFESSIONAL BILL TABLE
-==========================================*/
-.billContainer *{
 
-    overflow-wrap:break-word;
+/* =====================================================
+        PAYMENT DETAILS FORM
+===================================================== */
 
-}
+.paymentDetailsForm{
 
-.tableCard{
+    width:100%;
 
-    background:#ffffff;
+    margin-top:18px;
 
-    border-radius:16px;
+    padding:16px 18px;
 
-    overflow:hidden;
-
-    margin:10px 0;
+    background:#fafdff;
 
     border:1px solid #dbe7f3;
 
-}
-
-#billTable{
-
-    width:100%;
-
-    border-collapse:collapse;
-
-}
-
-#billTable thead{
-
-    background:#1976D2;
-
-    color:white;
-
-}
-
-#billTable th{
-
-    padding:6px;
-
-    font-size:15px;
-
-    font-weight:600;
-
-    text-align:center;
-
-    letter-spacing:.5px;
+    border-radius:10px;
 
 }
 
 
-#billTable td{
+.paymentDetailsForm > label{
 
-    border-bottom:1px solid #e9eef5;
+    display:block;
 
-    padding:2px;
-
-    text-align:center;
-
-
-}
-
-#billTable tbody tr:nth-child(even){
-
-    background:#f8fbff;
-
-}
-
-#billTable tbody tr:hover{
-
-    background:#eef6ff;
-
-}
-
-#billTable input{
-
-    width:100%;
-
-    border:none;
-
-    outline:none;
-
-    background:transparent;
-
-    font-size:15px;
-
-    text-align:center;
-
-    padding:2px;
-
-    font-family:'Noto Sans Gujarati',sans-serif;
-    min-height: 28px;
-   
-    resize: vertical;     
-    overflow: hidden;
-    white-space: pre-wrap;
-    
-}
-
-.delete-btn{
-
-    width:32px;
-
-    height:32px;
-
-    border:none;
-
-    border-radius:5px;
-
-    background:#d32f2f;
-
-    color:white;
-
-    cursor:pointer;
-
-    font-size:16px;
-
-}
-
-.delete-btn:hover{
-
-    background:#b71c1c;
-
-}
-
-.amount{
-
-    font-weight:bold;
+    margin-bottom:8px;
 
     color:#1565C0;
 
-}
-.tableButtons{
+    font-size:16px;
 
-    display:flex;
-    justify-content:flex-end;
-   
-
-    padding:10px;
-    gap:15px;
-    
-    background:#fafbfd;
+    font-weight:700;
 
 }
-#billTable td {
-    vertical-align: top;
+
+
+#paymentDetails{
+
+    width:100%;
+
+    min-height:65px;
+
+    padding:10px 12px;
+
+    resize:vertical;
+
+    background:#ffffff;
+
+    border:1px solid #cbd5e1;
+
+    border-radius:8px;
+
+    outline:none;
+
+    font-family:'Noto Sans Gujarati',sans-serif;
+
+    font-size:16px;
+
+    line-height:1.5;
+
 }
 
-#billTable tr {
-    height: auto;
-    width: auto;
+
+#paymentDetails:focus{
+
+    border-color:#1565C0;
+
+    box-shadow:0 0 0 3px rgba(21,101,192,.12);
+
 }
-.description {
-    width: 100%;
-    min-height: 50px;
-    border: none;
-    resize: vertical;      /* or use "none" if you don't want resizing */
-    overflow: hidden;
-    white-space: pre-wrap;
-    word-break: break-word;
-    overflow-wrap: break-word;
-    text-align:left !important;
-    font-family: "Noto Sans Gujarati", sans-serif;
-    font-size: 15px;
-    padding: 2px;
-    background: transparent;
-}
+
+
+/* =====================================================
+        FORM BUTTONS
+===================================================== */
+
+.generateReceiptArea,
 
 .addItemArea{
 
@@ -817,17 +744,14 @@ body{
 
     gap:10px;
 
-    padding:14px 0 8px;
+    margin-top:14px;
 
 }
 
-#addRow{
 
-    background:#ffffff;
+#addRow,
 
-    color:#28a745;
-
-    border:1px solid #28a745;
+#generateReceiptBtn{
 
     padding:8px 14px;
 
@@ -835,13 +759,25 @@ body{
 
     cursor:pointer;
 
+    font-family:'Poppins',sans-serif;
+
     font-weight:600;
 
-    font-family:'Poppins', sans-serif;
-
-    transition:all .2s ease;
+    transition:.2s ease;
 
 }
+
+
+#addRow{
+
+    color:#28a745;
+
+    background:#ffffff;
+
+    border:1px solid #28a745;
+
+}
+
 
 #addRow:hover{
 
@@ -851,27 +787,17 @@ body{
 
 }
 
-#generateReceiptBtn{
 
-    background:#1565C0;
+#generateReceiptBtn{
 
     color:#ffffff;
 
+    background:#1565C0;
+
     border:1px solid #1565C0;
 
-    padding:8px 14px;
-
-    border-radius:8px;
-
-    cursor:pointer;
-
-    font-weight:600;
-
-    font-family:'Poppins', sans-serif;
-
-    transition:all .2s ease;
-
 }
+
 
 #generateReceiptBtn:hover{
 
@@ -882,6 +808,185 @@ body{
     transform:translateY(-1px);
 
 }
+
+
+/* =====================================================
+        FORM ITEM TABLE
+===================================================== */
+
+.tableCard{
+
+    margin:10px 0;
+
+    overflow:hidden;
+
+    background:#ffffff;
+
+    border:1px solid #dbe7f3;
+
+    border-radius:16px;
+
+}
+
+
+#billTable{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+}
+
+
+#billTable thead{
+
+    color:#ffffff;
+
+    background:#1976D2;
+
+}
+
+
+#billTable th{
+
+    padding:6px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    text-align:center;
+
+}
+
+
+#billTable td{
+
+    padding:2px;
+
+    text-align:center;
+
+    vertical-align:top;
+
+    border-bottom:1px solid #e9eef5;
+
+}
+
+
+#billTable tbody tr:nth-child(even){
+
+    background:#f8fbff;
+
+}
+
+
+#billTable tbody tr:hover{
+
+    background:#eef6ff;
+
+}
+
+
+#billTable input,
+
+.description{
+
+    width:100%;
+
+    padding:2px;
+
+    background:transparent;
+
+    border:none;
+
+    outline:none;
+
+    font-family:'Noto Sans Gujarati',sans-serif;
+
+    font-size:15px;
+
+}
+
+
+#billTable input{
+
+    min-height:28px;
+
+    text-align:center;
+
+}
+
+
+.description{
+
+    min-height:50px;
+
+    overflow:hidden;
+
+    resize:vertical;
+
+    text-align:left !important;
+
+    white-space:pre-wrap;
+
+    word-break:break-word;
+
+    overflow-wrap:break-word;
+
+}
+
+
+.delete-btn{
+
+    width:32px;
+
+    height:32px;
+
+    color:#ffffff;
+
+    background:#d32f2f;
+
+    border:none;
+
+    border-radius:5px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+
+.delete-btn:hover{
+
+    background:#b71c1c;
+
+}
+
+
+.amount{
+
+    color:#1565C0;
+
+    font-weight:bold;
+
+}
+
+
+.tableButtons{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:15px;
+
+    padding:10px;
+
+    background:#fafbfd;
+
+}
+
 /*==========================================
             SUMMARY SECTION
 ==========================================*/
@@ -959,150 +1064,763 @@ body{
 
 }
 
-/*==========================================
-        SIGNATURE SECTION
-==========================================*/
+/* =====================================================
+        GENERATED RECEIPT PAGE
+===================================================== */
 
-.signatureSection{
-
-    margin-top:5px;
-
-}
-
-.signatureContainer{
-
-    margin-top:5px;
-
-    display:grid;
-
-    grid-template-columns:repeat(2,1fr);
-
-    gap:10px;
-
-}
-
-.signatureCard{
-
-    background:white;
-
-    padding:10px;
-
-    border-radius:15px;
-
-    text-align:center;
-
-}
-
-.signatureLine{
-
-    height:35px;
-
-    border-bottom:2px solid #444;
-
-    margin-bottom:5px;
-
-}
-
-.signatureCard h4{
-
-    color:#333;
-
-    font-size:16px;
-
-}
-
-.cutLine{
+.generatedReceiptPage{
 
     display:none;
 
-    margin:30px 0;
+    width:210mm;
 
-    text-align:center;
+    min-height:297mm;
 
-    border-top:3px dashed #888;
+    margin:20px auto;
 
-    position:relative;
+    padding:8mm;
 
-}
-
-.cutLine span{
-
-    position:relative;
-
-    top:-16px;;
-
-    background:#edf2f7;
-
-    padding:0 8px;
-
-    color:#666;
-
-    font-weight:600;
-
- }
-
-.showCutLine .cutLine{
-
-    display:block;
+    background:#ffffff;
 
 }
- 
-/*==================================================
-        COMPACT DUPLICATE RECEIPT
-        CUSTOMER COPY
-===================================================*/
 
-.duplicateReceipt{
+
+#printableBills{
 
     width:100%;
-    height:20%;
 
-    background:white;
+    display:none;
+
+    flex-direction:column;
+
+    align-items:stretch;
+
+}
+
+
+/* =====================================================
+        GENERATED MAIN BILL
+===================================================== */
+
+#generatedMainBill{
+
+    width:100%;
+
+    overflow:hidden;
+
+    background:#ffffff;
 
     border:2px solid #1565C0;
 
     border-radius:10px;
 
+    font-family:'Noto Sans Gujarati',sans-serif;
+
+}
+
+
+.printBillTable{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    table-layout:fixed;
+
+    background:#ffffff;
+
+}
+
+
+.printBillTable td,
+
+.printBillTable th{
+
+    border:none;
+
+}
+
+
+/* =====================================================
+        GENERATED HEADER
+===================================================== */
+
+.printHeaderRow{
+
+    border-bottom:2px solid #1565C0;
+
+}
+
+
+.printHeaderRow > td:first-child{
+
+    width:82%;
+
+    padding:8px 12px;
+
+    text-align:center;
+
+    vertical-align:top;
+
+}
+
+
+.printHeaderRow .printPhone{
+
+    width:18%;
+
+    padding:8px 10px;
+
+    color:#1565C0;
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    text-align:right;
+
+    vertical-align:middle;
+
+    white-space:nowrap;
+
+}
+
+
+.printGanesh{
+
+    margin-bottom:4px;
+
+    color:#D32F2F;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    text-align:center;
+
+}
+
+
+.printHeaderRow h1{
+
+    margin:0;
+
+    color:#1565C0;
+
+    font-size:20px;
+
+    font-weight:700;
+
+    text-align:center;
+
+}
+
+
+.printHeaderRow h2{
+
+    margin:2px 0;
+
+    color:#444;
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    text-align:center;
+
+}
+
+
+.printHeaderRow p{
+
+    margin:1px 0;
+
+    color:#444;
+
+    font-size:12px;
+
+    line-height:1.4;
+
+    text-align:center;
+
+}
+
+
+/* =====================================================
+        CUSTOMER DETAILS - GENERATED BILL
+===================================================== */
+
+.printCustomerDetails{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    table-layout:fixed;
+
+}
+
+
+.printCustomerDetails td{
+
+    padding:5px 8px;
+
+    vertical-align:bottom;
+
+    white-space:nowrap;
+
+}
+
+
+.printCustomerDetails label{
+
+    margin-right:5px;
+
+    white-space:nowrap;
+
+    font-weight:400;
+
+}
+
+
+.printCustomerDetails span{
+
+    display:inline-block;
+
+    min-width:40px;
+
+    padding:2px 4px;
+
+    color:#111;
+
+    border-bottom:1px dotted #333;
+
+    font-weight:500;
+
+    vertical-align:bottom;
+
+}
+
+
+.printCustomerDetails #pCustomerName{
+
+    width:calc(100% - 70px);
+
+}
+
+
+.printCustomerDetails #pVillage{
+
+    width:calc(100% - 120px);
+
+}
+
+
+.printCustomerDetails #pTaluka{
+
+    width:calc(100% - 65px);
+
+}
+
+
+.printCustomerDetails #pDistrict{
+
+    width:calc(100% - 65px);
+
+}
+
+
+.printCustomerDetails #pMobileNumber{
+
+    width:calc(100% - 120px);
+
+}
+
+
+.printCustomerDetails #pBillNo{
+
+    width:calc(100% - 85px);
+
+}
+
+
+.printCustomerDetails #pBillDate{
+
+    width:calc(100% - 55px);
+
+}
+
+
+.printCustomerDetails .panchayatText{
+
+    width:auto;
+
+    min-width:auto;
+
+    padding:0;
+
+    border-bottom:none;
+
+    font-size:12px;
+
+}
+
+
+
+/* ==========================================
+        ITEM TABLE — CENTERED WITH SPACE
+========================================== */
+
+.itemTableSpace{
+
+    width:100%;
+
+    padding:40px 40px 40px 40px !important;
+
+    border:none !important;
+
+}
+
+
+.innerItemTable{
+
+    width:100%;
+
+    margin:0 auto;
+
+    border-collapse:collapse;
+
+    padding:40px 40px 40px 40px !important;
+  
+    table-layout:fixed;
+
+    border:1px solid #dbe7f3;
+
+    border-radius:8px;
+
+    overflow:hidden;
+
+}
+
+
+/* COLUMN WIDTHS */
+
+.innerItemTable th:nth-child(1),
+.innerItemTable td:nth-child(1){
+
+    width:8%;
+
+}
+
+.innerItemTable th:nth-child(2),
+.innerItemTable td:nth-child(2){
+
+    width:50%;
+
+}
+
+.innerItemTable th:nth-child(3),
+.innerItemTable td:nth-child(3){
+
+    width:12%;
+
+}
+
+.innerItemTable th:nth-child(4),
+.innerItemTable td:nth-child(4){
+
+    width:15%;
+
+}
+
+.innerItemTable th:nth-child(5),
+.innerItemTable td:nth-child(5){
+
+    width:15%;
+
+}
+
+
+/* HEADER */
+
+.innerItemTable .printItemHeader{
+
+    background:#1976D2;
+
+    color:#ffffff;
+
+}
+
+
+.innerItemTable th{
+
+    padding:10px 8px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    text-align:center;
+
+}
+
+
+/* ITEM ROW */
+
+.innerItemTable td{
+
     padding:8px;
 
-    /* margin-top:6px; */
+    vertical-align:top;
+
+    text-align:center;
+
+    font-size:12px;
+
+    border-bottom:1px solid #e5ebf2;
+
+}
+
+
+/* DESCRIPTION */
+
+.innerItemTable td:nth-child(2){
+
+    text-align:left;
+
+    padding-left:14px;
+
+    padding-right:14px;
+
+}
+
+
+/* DESCRIPTION TEXT */
+
+.printDescription{
+
+    display:block;
+
+    width:100%;
+
+    min-height:30px;
+
+    height:auto;
+
+    text-align:left !important;
+
+    white-space:pre-wrap;
+
+    word-break:break-word;
+
+    overflow-wrap:break-word;
+
+    line-height:1;
+   
+    border: none;
+    resize: vertical;      /* or use "none" if you don't want resizing */
+    overflow: hidden;
+    font-family: "Noto Sans Gujarati", sans-serif;
+    font-size: 15px;
+    padding: 2px;
+    background: transparent;
+
+}
+
+
+/* ALTERNATING ROW */
+
+.innerItemTable tbody tr:nth-child(even){
+
+    background:#f8fbff;
+    font-size:15px;
+
+}
+
+/* =====================================================
+        SUMMARY ROW
+===================================================== */
+
+.printSummaryRow{
+
+    width:100%;
+
+    border-top:1px solid #dbe7f3;
+
+}
+
+
+.printSummaryRow td{
+
+    padding:8px 10px;
+
+    vertical-align:middle;
+
+    font-size:15px;
+
+}
+
+
+
+/* =====================================================
+        LABELS
+===================================================== */
+
+.printSummaryRow label{
+
+    display:block;
+
+    margin-bottom:5px;
+
+    color:#1565C0;
+
+    font-size:12px;
+
+    font-weight:700;
+
+}
+
+
+/* =====================================================
+        AMOUNT IN WORDS
+        LONGER 70% BOX
+===================================================== */
+
+#pAmountWords{
+
+    display:block;
+
+    width:100%;
+
+    min-height:42px;
+
+    padding:8px 10px;
+
+    border:1px solid #dbe7f3;
+
+    border-bottom:2px dotted #1565C0;
+
+    border-radius:6px;
+
+    background:#f8fbff;
+
+    color:#333;
+
+    font-family:"Noto Sans Gujarati", sans-serif;
+
+    font-size:15px;
+
+    font-weight:500;
+
+    box-sizing:border-box;
+
+}
+
+
+/* =====================================================
+        GRAND TOTAL
+        SHORTER 30% BOX
+===================================================== */
+
+#pGrandTotal{
+
+    display:block;
+
+    width:100%;
+
+    min-height:42px;
+
+    padding:8px 10px;
+
+    border:2px solid #1565C0;
+
+    border-radius:6px;
+
+    background:#f4f8ff;
+
+    color:#1565C0;
+
+    font-family:"Noto Sans Gujarati", sans-serif;
+
+    font-size:25px;
+
+    font-weight:700;
+
+    text-align:right;
+
+    box-sizing:border-box;
+
+}
+
+
+
+/* =====================================================
+        HIDE BANK / CHEQUE DETAILS COMPLETELY
+===================================================== */
+
+.printPaymentDetails{
+
+    display:none !important;
+
+}
+
+
+/* =====================================================
+        PRINT VERSION
+===================================================== */
+
+@media print{
+
+    .printSummaryRow td{
+
+        padding:10px 14px !important;
+
+    }
+
+
+    .printSummaryRow label{
+
+        font-size:10px;
+
+    }
+
+
+    #pAmountWords{
+
+        min-height:28px;
+
+        padding:5px 8px;
+
+        font-size:10px;
+
+    }
+
+
+    #pGrandTotal{
+
+        min-width:130px;
+
+        padding:6px 10px;
+
+        font-size:14px;
+
+    }
+
+
+    .printPaymentDetails{
+
+        display:none !important;
+
+    }
+
+}
+
+
+
+/* =====================================================
+        MAIN BILL FOOTER
+===================================================== */
+
+.printFooter{
+
+    border-top:1px solid #dbe7f3;
+
+  padding: 20px; 
+}
+
+
+.printFooter td{
+
+    padding:8px 10px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+
+.printFooter td:last-child{
+
+    text-align:right;
+
+}
+
+
+/* =====================================================
+        CUT LINE
+===================================================== */
+
+.cutLine{
+
+    display:block;
+
+    width:100%;
+
+    margin:20px 0;
+
+    text-align:center;
+
+    border-top:3px dashed #888;
+
+}
+
+
+.cutLine span{
+
+    position:relative;
+
+    top:-12px;
+
+    padding:0 10px;
+
+    color:#666;
+
+    background:#ffffff;
+
+    font-size:10px;
+
+    font-weight:600;
+
+}
+
+
+/* =====================================================
+        DUPLICATE RECEIPT
+===================================================== */
+
+.duplicateReceipt{
+
+    width:100%;
+
+    padding:8px;
+
+    background:#ffffff;
+
+    border:2px solid #1565C0;
+
+    border-radius:10px;
 
     font-family:'Noto Sans Gujarati',sans-serif;
 
 }
 
-.duplicateReceipt[hidden]{
-
-    display:none;
-
-}
-
-/*==============================
-        HEADER
-===============================*/
 
 .duplicateHeader{
 
     display:flex;
 
-    justify-content:space-between;
-
     align-items:center;
 
-    border-bottom:2px solid #1565C0;
+    justify-content:space-between;
 
     padding-bottom:8px;
 
-}
-
-
-.duplicateCompany h2{
-
-    margin:0;
-
-    font-size:22px;
-
-    color:#1565C0;
+    border-bottom:2px solid #1565C0;
 
 }
 
@@ -1111,11 +1829,11 @@ body{
 
     margin:2px 0;
 
-    font-size:13px;
-
-    font-family:Poppins;
-
     color:#444;
+
+    font-family:'Poppins',sans-serif;
+
+    font-size:13px;
 
 }
 
@@ -1131,72 +1849,35 @@ body{
 
 .duplicatePhone{
 
-    background:#ffffff;
-
-    color:white;
-
     padding:8px 12px;
 
-    border-radius:6px;
+    color:#1565C0;
 
     font-size:14px;
 
     font-weight:bold;
 
 }
-/* ==========================================
-        DUPLICATE ADDRESS + PANCHAYAT
-========================================== */
 
-.duplicateAddressCell{
-
-    display:flex;
-
-    align-items:flex-end;
-
-    gap:6px;
-
-}
-
-
-.duplicateAddressCell #dVillage{
-
-    flex:1;
-
-    min-width:0;
-
-}
-
-
-.duplicateAddressCell .panchayatLabel{
-
-    white-space:nowrap;
-
-    font-weight:400 !important;
-
-}
-
-/*==============================
-        TITLE
-===============================*/
 
 .receiptTitle{
 
-    text-align:center;
+    margin:8px 0;
+
+    color:#1565C0;
 
     font-size:17px;
 
     font-weight:700;
 
-    color:#1565C0;
-
-    margin:8px 0;
+    text-align:center;
 
 }
 
-/* ==========================================
-   RECEIPT NUMBER AND RECEIPT DATE
-========================================== */
+
+/* =====================================================
+        RECEIPT NUMBER + DATE
+===================================================== */
 
 .duplicateReceiptHeader{
 
@@ -1206,14 +1887,12 @@ body{
 
     grid-template-columns:1fr 1fr;
 
-    column-gap:18px;
+    gap:18px;
 
     margin-bottom:10px;
 
 }
 
-
-/* BOTH RECEIPT FIELDS */
 
 .duplicateReceiptHeader > div{
 
@@ -1228,8 +1907,6 @@ body{
 }
 
 
-/* RECEIPT DATE ON RIGHT */
-
 .duplicateReceiptHeader > div:last-child{
 
     justify-content:flex-end;
@@ -1237,13 +1914,11 @@ body{
 }
 
 
-/* LABELS */
-
 .duplicateReceiptHeader label{
 
-    font-size:12px;
-
     color:#1565C0;
+
+    font-size:12px;
 
     font-weight:600;
 
@@ -1252,76 +1927,44 @@ body{
 }
 
 
-/* PAVTI NUMBER */
+#dPavtiNo,
+
+#dPavtiDate{
+
+    padding:3px 4px;
+
+    background:transparent;
+
+    border:none;
+
+    border-bottom:1px dotted #333;
+
+    outline:none;
+
+    font-family:'Poppins','Noto Sans Gujarati',sans-serif;
+
+    font-size:14px;
+
+}
+
 
 #dPavtiNo{
 
     width:170px;
 
-    min-width:100px;
-
-    border:none;
-
-    border-bottom:1px dotted #333;
-
-    outline:none;
-
-    background:transparent;
-
-    padding:3px 4px;
-
-    font-size:14px;
-
-    font-family:'Poppins',
-                'Noto Sans Gujarati',
-                sans-serif;
-
-    font-weight:500;
-
 }
 
-
-/* RECEIPT DATE */
 
 #dPavtiDate{
 
     width:170px;
 
-    min-width:130px;
-
-    border:none;
-
-    border-bottom:1px dotted #333;
-
-    outline:none;
-
-    background:transparent;
-
-    padding:3px 4px;
-
-    font-size:14px;
-
-    font-family:'Poppins',
-                'Noto Sans Gujarati',
-                sans-serif;
-
 }
 
 
-/* FOCUS */
-
-#dPavtiNo:focus,
-#dPavtiDate:focus{
-
-    outline:none;
-
-    border-bottom:1px dotted #333;
-
-}
-/*==========================================
-        DUPLICATE CUSTOMER DETAILS
-        MATCH MAIN CUSTOMER STYLE
-==========================================*/
+/* =====================================================
+        DUPLICATE CUSTOMER
+===================================================== */
 
 .duplicateCustomer{
 
@@ -1329,7 +1972,7 @@ body{
 
     display:grid;
 
-    grid-template-columns:repeat(3, 1fr);
+    grid-template-columns:repeat(3,1fr);
 
     gap:10px;
 
@@ -1348,8 +1991,6 @@ body{
 
     min-width:0;
 
-    border:none;
-
     padding-bottom:3px;
 
 }
@@ -1357,13 +1998,13 @@ body{
 
 .duplicateCustomer label{
 
-    white-space:nowrap;
+    color:#1565C0;
 
     font-size:12px;
 
-    color:#1565C0;
-
     font-weight:600;
+
+    white-space:nowrap;
 
 }
 
@@ -1376,17 +2017,17 @@ body{
 
     overflow:hidden;
 
-    text-overflow:ellipsis;
-
-    white-space:nowrap;
+    padding:3px 4px;
 
     border-bottom:1px dotted #333;
-
-    padding:3px 4px;
 
     font-size:14px;
 
     font-weight:500;
+
+    text-overflow:ellipsis;
+
+    white-space:nowrap;
 
 }
 
@@ -1398,28 +2039,26 @@ body{
 }
 
 
-
-/*==============================
+/* =====================================================
         RECEIPT BODY
-===============================*/
-
+===================================================== */
 
 .receiptBody{
-
-    border-top:1px solid #ddd;
 
     margin-top:8px;
 
     padding-top:8px;
+
+    border-top:1px solid #ddd;
 
 }
 
 
 .receiptBody p{
 
-    font-size:14px;
-
     margin:5px 0;
+
+    font-size:14px;
 
     line-height:1.5;
 
@@ -1433,29 +2072,24 @@ body{
 }
 
 
-/*==============================
-        AMOUNT WORDS
-===============================*/
-
-
 .amountWordsReceipt{
+
+    margin:8px 0;
+
+    padding:6px 10px;
 
     background:#f4f8ff;
 
     border-radius:6px;
-
-    padding:6px 10px;
-
-    margin:8px 0;
 
 }
 
 
 .amountWordsReceipt label{
 
-    font-size:12px;
-
     color:#1565C0;
+
+    font-size:12px;
 
     font-weight:bold;
 
@@ -1471,50 +2105,64 @@ body{
 }
 
 
-/*==============================
-        PAYMENT DETAILS
-===============================*/
-
-
 .paymentDetails{
+
     display:flex;
+
     align-items:flex-end;
+
     gap:10px;
+
     margin-top:8px;
+
 }
+
 
 .paymentDetails label{
-    white-space:nowrap;
+
     color:#1565C0;
+
     font-size:13px;
+
     font-weight:600;
+
+    white-space:nowrap;
+
 }
 
-#bankDetails{
+
+#dPaymentDetails{
+
     flex:1;
+
     height:24px;
-
-    border:none;
-    border-bottom:1.5px dotted #444;
-    background:transparent;
-
-    resize:none;
-    overflow:hidden;
-
-    outline:none;
 
     padding:0 2px;
 
-    font-family:"Noto Sans Gujarati", sans-serif;
+    background:transparent;
+
+    border:none;
+
+    border-bottom:1.5px dotted #444;
+
+    outline:none;
+
+    resize:none;
+
+    overflow:hidden;
+
+    font-family:'Noto Sans Gujarati',sans-serif;
+
     font-size:13px;
+
     line-height:22px;
+
 }
 
 
-/*==============================
-        FOOTER
-===============================*/
-
+/* =====================================================
+        RECEIPT FOOTER
+===================================================== */
 
 .duplicateFooter{
 
@@ -1525,326 +2173,143 @@ body{
     margin-top:10px;
 
     padding-top:8px;
+
     border-top:1px solid #ccc;
 
-    font-size:13px;
+    font-size:15px;
 
     font-weight:600;
 
 }
 
-    /*==================================================
-        RESPONSIVE BILL PAGE
-==================================================*/
 
-@media (max-width: 1100px) {
+/* =====================================================
+        RESPONSIVE SCREEN
+===================================================== */
 
-    /* ================================
-       PAGE
-    ================================= */
+@media(max-width:1100px){
 
-    .page {
-        width: 100%;
-        min-height: auto;
-        padding: 20px;
+    .topBar{
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+        gap:10px;
+
     }
 
 
-    /* ================================
-       MAIN BILL
-    ================================= */
+    .appTitle{
 
-    .mainBillWrapper {
-        width: 100%;
-        padding: 10px;
-    }
+        justify-content:center;
 
-    .billContainer {
-        width: 100%;
-        padding: 10px;
     }
 
 
-    /* ================================
-       BILL HEADER
-    ================================= */
+    .topActions{
 
-    .headerTable {
-        width: 100%;
-    }
+        justify-content:center;
 
-    .companyCell {
-        width: 75%;
-    }
+        flex-wrap:wrap;
 
-    .phoneCell {
-        width: 25%;
-    }
-
-
-    /* ================================
-       CUSTOMER DETAILS
-    ================================= */
-
-    .customerCard {
-        width: 100%;
-    }
-
-    .customerTable {
-        width: 100%;
-    }
-
-
-    /* ================================
-       ITEMS TABLE
-    ================================= */
-
-    .tableCard {
-        width: 100%;
-        overflow-x: auto;
-    }
-
-    #billTable {
-        width: 100%;
-        min-width: 700px;
-    }
-
-
-    /* ================================
-       SUMMARY
-    ================================= */
-
-    .summaryTable {
-        width: 100%;
-    }
-
-
-    /* ================================
-       BUTTONS
-    ================================= */
-
-    .tableButtons {
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-
-    /* ================================
-       DUPLICATE RECEIPT
-    ================================= */
-
-    .duplicateReceipt {
-        width: 100%;
     }
 
 }
 
-  @media (max-width: 700px) {
 
-    /* ================================
-       PAGE
-    ================================= */
+@media(max-width:700px){
 
-    .page {
-        padding: 8px;
-    }
+    .page,
 
-    .mainBillWrapper {
-        padding: 5px;
-    }
+    .generatedReceiptPage{
 
-    .billContainer {
-        padding: 6px;
-    }
+        width:100%;
 
+        min-height:100vh;
 
-    /* ================================
-       MAIN HEADER
-    ================================= */
+        margin:0;
 
-    .headerTable,
-    .headerTable tbody,
-    .headerTable tr,
-    .headerTable td {
-        display: block;
-        width: 100%;
-    }
+        padding:10px;
 
-    .companyCell {
-        text-align: center;
-    }
-
-    .phoneCell {
-        text-align: center;
-        padding-top: 8px !important;
     }
 
 
-    /* ================================
-       CUSTOMER DETAILS
-    ================================= */
+    .printCustomerDetails td{
 
-    .customerTable,
-    .customerTable tbody,
-    .customerTable tr,
-    .customerTable td {
-        display: block;
-        width: 100%;
-    }
+        padding:4px 5px;
 
-    .customerTable td {
-        padding: 5px 0;
     }
 
 
-    /* ================================
-       ITEM TABLE
-    ================================= */
+    .printCustomerDetails span{
 
-    .tableCard {
-        overflow-x: auto;
-    }
+        min-width:40px;
 
-    #billTable {
-        min-width: 700px;
-    }
-
-
-    /* ================================
-       SUMMARY
-    ================================= */
-
-    .summaryTable,
-    .summaryTable tbody,
-    .summaryTable tr,
-    .summaryTable td {
-        display: block;
-        width: 100%;
-    }
-
-    .summaryTable td {
-        padding: 5px 0;
-    }
-
-
-    /* ================================
-       BUTTONS
-    ================================= */
-
-    .tableButtons {
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    .tableButtons button {
-        width: 100%;
-    }
-
-
-    /* ================================
-       DUPLICATE RECEIPT HEADER
-    ================================= */
-
-    .duplicateHeader {
-        flex-direction: column;
-        gap: 8px;
-        text-align: center;
-    }
-
-
-    /* ================================
-       DUPLICATE CUSTOMER DETAILS
-    ================================= */
-    .duplicateReceiptHeader{
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    gap:10px;
-
-}
-
-
-.duplicateReceiptHeader > div{
-
-    display:flex;
-
-    align-items:flex-end;
-
-    gap:4px;
-
-}
-
-
-.duplicateReceiptHeader > div:last-child{
-
-    justify-content:flex-end;
-
-}
-
-
-#dPavtiNo{
-
-    width:85px;
-
-    min-width:85px;
-
-}
-
-
-#dPavtiDate{
-
-    width:100px;
-
-    min-width:100px;
-
-}
-
-/* =========================================
-   RECEIPT NUMBER AND DATE
-========================================= */
-
-.duplicateReceiptHeader {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px 0;
-}
-
-    .duplicateCustomer {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-
-    /* ================================
-       FOOTER
-    ================================= */
-
-    .duplicateFooter {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
     }
 
 }
 
 
 /* =====================================================
-        A4 PRINT LAYOUT
+        DEFAULT STATE
+===================================================== */
+
+#formPage{
+
+    display:block;
+
+}
+
+
+#printableBills{
+
+    display:none;
+
+}
+
+
+/* =====================================================
+        GENERATED RECEIPT MODE
+===================================================== */
+
+body.receiptGeneratedMode{
+
+    background:#ffffff;
+
+}
+
+
+body.receiptGeneratedMode #formPage{
+
+    display:none !important;
+
+}
+
+
+body.receiptGeneratedMode #printableBills{
+
+    display:flex !important;
+
+}
+
+
+body.receiptGeneratedMode #duplicateReceipt{
+
+    display:block !important;
+
+}
+
+
+/* =====================================================
+        PRINT SETTINGS
 ===================================================== */
 
 @page{
 
     size:A4 portrait;
 
-    margin:3mm;
+    margin:0;
 
 }
 
@@ -1852,754 +2317,328 @@ body{
 @media print{
 
     html,
+
     body{
 
         width:210mm;
 
-        height:297mm;
+        min-height:297mm;
 
         margin:0 !important;
 
         padding:0 !important;
 
+        overflow:visible !important;
+
         background:#ffffff !important;
 
-        overflow:hidden;
-
     }
 
-
-    /* ==========================================
-            A4 PAGE
-    ========================================== */
-
-    .page{
-
-        width:204mm;
-
-        height:290mm !important;
-
-        overflow:hidden !important;
-
-        margin:0 auto !important;
-
-        padding:3mm !important;
-
-        box-sizing:border-box;
-
-        background:#ffffff;
-
-        display:flex;
-
-        flex-direction:column;
-
-    }
-
-
-    /* ==========================================
-            HIDE APP CONTROLS
-    ========================================== */
 
     .topBar,
-    .tableButtons,
-    button{
+
+    #formPage,
+
+    .page,
+
+    button,
+
+    .searchModalOverlay{
 
         display:none !important;
 
     }
 
 
-    /* ==========================================
-            MAIN BILL - 70%
-    ========================================== */
-
-    .mainBillWrapper{
-
-        width:100% !important;
-
-        padding:4px !important;
-
-        margin:0 !important;
-
-        background:#ffffff !important;
-
-        display:flex;
-
-        justify-content:center;
-
-        flex:0 0 auto;
-
-    }
-
-
-    .billContainer{
-
-        width:70% !important;
-
-        max-width:70% !important;
-
-        padding:6px !important;
-
-        margin:0 !important;
-
-        box-sizing:border-box;
-
-        overflow:hidden;
-
-    }
-
-
-    /* ==========================================
-            MAIN BILL CONTENT
-    ========================================== */
-
-    .billHeader{
-
-        margin-bottom:6px !important;
-
-    }
-
-
-    .ganesh{
-
-        font-size:13px !important;
-
-        margin-bottom:4px !important;
-
-    }
-
-
-    .companyCell h1{
-
-        font-size:20px !important;
-
-    }
-
-
-    .companyCell h2{
-
-        font-size:13px !important;
-
-    }
-
-
-    .companyCell p{
-
-        font-size:12px !important;
-
-    }
-
-
-    .phoneCell{
-
-        font-size:18px !important;
-
-    }
-
-
-    .customerTable td{
-
-        padding:8px 12px !important;
-
-    }
-
-
-    .customerTable label{
-
-        font-size:inherit !important;
-
-    }
-
-
-    .customerTable input{
-
-        font-size:15px !important;
-
-        height:auto !important;
-
-        padding:3px 4px !important;
-
-    }
-
-
-    /* ==========================================
-            BILL TABLE
-    ========================================== */
-
-    .tableCard{
-
-        width:100% !important;
-
-        margin:10px 0 !important;
-
-        overflow:hidden !important;
-
-    }
-
-
-    #billTable{
-
-        width:100% !important;
-
-        table-layout:fixed;
-
-    }
-
-
-    #billTable th{
-
-        padding:6px !important;
-
-        font-size:15px !important;
-
-    }
-
-
-    #billTable td{
-
-        padding:2px !important;
-
-        height:auto !important;
-
-        vertical-align:top;
-
-    }
-
-
-    #billTable input{
-
-        width:100% !important;
-
-        min-height:28px !important;
-
-        height:auto !important;
-
-        font-size:15px !important;
-
-        padding:2px !important;
-
-        box-sizing:border-box;
-
-    }
-
-
-    .description{
-
-        width:100% !important;
-
-        min-height:50px !important;
-
-        height:auto !important;
-
-        font-size:15px !important;
-
-        padding:2px !important;
-
-        box-sizing:border-box;
-
-        overflow:hidden;
-
-        resize:none;
-
-    }
-
-
-    /* ==========================================
-            SUMMARY
-    ========================================== */
-
-    .summaryTable{
-
-        width:100% !important;
-
-        margin-top:8px !important;
-
-    }
-
-
-    .summaryTable textarea,
-    .summaryTable input{
-
-        width:100% !important;
-
-        height:55px !important;
-
-        font-size:15px !important;
-
-        box-sizing:border-box;
-
-    }
-
-
-    /* ==========================================
-            SIGNATURE
-    ========================================== */
-
-    .signatureSection{
-
-        margin-top:5px !important;
-
-    }
-
-
-    /* ==========================================
-            CUT LINE
-    ========================================== */
-
-    .cutLine{
-
-    flex:0 0 auto;
-
-    margin:20px 0 !important;
-
-}
-
-
-    body.showCutLine .cutLine{
+    .generatedReceiptPage{
 
         display:block !important;
 
-    }
+        width:210mm !important;
 
+        min-height:297mm !important;
 
-    /* ==========================================
-            DUPLICATE RECEIPT
-    ========================================== */
+        margin:0 !important;
 
-    .duplicateReceipt{
+        padding:5mm !important;
 
-    width:100% !important;
-
-    height:auto !important;
-
-    min-height:0 !important;
-
-    max-height:none !important;
-
-    box-sizing:border-box;
-
-    overflow:hidden !important;
-
-    margin:0 !important;
-
-    padding:3px !important;
-
-    flex:0 0 auto;
-
-    page-break-inside:avoid !important;
-
-    break-inside:avoid !important;
-
-}
-
-
-    /* ==========================================
-            DUPLICATE HEADER
-    ========================================== */
-
-    .duplicateHeader{
-
-    width:100%;
-
-    display:flex !important;
-
-    align-items:center;
-
-    justify-content:space-between;
-
-    gap:5px;
-
-    padding-bottom:2px !important;
-
-    box-sizing:border-box;
-
-}
-
-
-    .duplicateCompany{
-
-        min-width:0;
-
-        flex:1;
+        background:#ffffff !important;
 
     }
 
 
-.duplicateCompany h2{
+    #printableBills{
 
-    font-size:18px !important;
+        display:flex !important;
 
-    line-height:1 !important;
+        width:100% !important;
 
-    margin:0 !important;
+        flex-direction:column !important;
 
-}
-
-
-.duplicateCompany h4{
-
-    font-size:11px !important;
-
-    line-height:1 !important;
-
-    margin:1px 0 !important;
-
-}
+    }
 
 
-.duplicateCompany p{
+    /* MAIN BILL */
 
-    font-size:9px !important;
+    #generatedMainBill{
 
-    line-height:1 !important;
+        width:100% !important;
 
-    margin:1px 0 !important;
+        border:2px solid #1565C0 !important;
 
-}
+        border-radius:8px !important;
 
-
-.duplicatePhone{
-
-    padding:2px 5px !important;
-
-    font-size:10px !important;
-
-}    
+    }
 
 
-    /* ==========================================
-            RECEIPT TITLE
-    ========================================== */
+    .printHeaderRow td{
 
-     .receiptTitle{
+        padding:5px 7px;
 
-    font-size:14px !important;
-
-    line-height:1 !important;
-
-    margin:3px 0 !important;
-
-}
+    }
 
 
-    /* ==========================================
-            RECEIPT NUMBER + DATE
-    ========================================== */
+    .printHeaderRow h1{
+
+        font-size:18px;
+
+    }
+
+
+    .printHeaderRow h2{
+
+        font-size:10px;
+
+    }
+
+
+    .printHeaderRow p{
+
+        font-size:8px;
+
+    }
+
+
+    .printGanesh{
+
+        font-size:9px;
+
+    }
+
+
+    .printPhone{
+
+        font-size:9px !important;
+
+    }
+
+
+    /* CUSTOMER DETAILS */
+
+    .printCustomerDetails td{
+
+        padding:4px 7px !important;
+
+        font-size:10px;
+
+    }
+
+
+    .printCustomerDetails strong{
+
+        font-size:10px;
+
+    }
+
+
+    .printCustomerDetails span{
+
+        padding:2px 3px;
+
+        font-size:10px;
+
+    }
+
+
+    /* ITEM TABLE */
+
+    .printItemHeader{
+
+        border-top-width:15px;
+
+    }
+
+
+    .printItemHeader th{
+
+        padding:7px 5px;
+
+        font-size:10px;
+
+    }
+
+
+    #printMainItems td{
+
+        padding:6px 5px;
+
+        font-size:9px;
+
+    }
+
+
+    #printMainItems td:nth-child(2){
+
+        padding-right:10px;
+
+        padding-left:10px;
+
+    }
+
+
+    #printMainItems{
+
+        border-bottom-width:15px;
+
+    }
+
+
+    /* TOTAL */
+
+    #pGrandTotal{
+
+        font-size:14px;
+
+    }
+
+
+    #pAmountWords{
+
+        font-size:9px;
+
+    }
+
+
+    /* PAYMENT */
+
+    .printPaymentDetails{
+
+        padding:5px 7px;
+
+        font-size:9px;
+
+    }
+
+
+    /* FOOTER */
+
+    .printFooter td{
+
+        padding:5px 7px;
+
+        font-size:9px;
+
+    }
+
+
+    /* CUT LINE */
+
+    .cutLine{
+
+        margin:15px 0;
+
+        border-top:3px dashed #888;
+
+    }
+
+
+    .cutLine span{
+
+        font-size:9px;
+
+    }
+
+
+    /* DUPLICATE RECEIPT */
+
+    #duplicateReceipt{
+
+        width:100% !important;
+
+        height:auto !important;
+
+        min-height:0 !important;
+
+        overflow:visible !important;
+
+        border:2px solid #1565C0 !important;
+
+        border-radius:8px !important;
+
+    }
+
 
     .duplicateReceiptHeader{
 
-    width:100% !important;
+        gap:10px;
 
-    display:grid !important;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:8px;
-
-    margin:3px 0 !important;
-
-    box-sizing:border-box;
-
-}
+    }
 
 
-    .duplicateReceiptHeader > div{
+    .duplicateReceiptHeader label{
 
-    min-width:0;
+        font-size:9px;
 
-    display:flex !important;
-
-    align-items:center !important;
-
-    gap:4px;
-
-    line-height:1 !important;
-
-}
-
-.duplicateReceiptHeader label{
-
-    font-size:9px !important;
-
-    line-height:1 !important;
-
-}
+    }
 
 
-      #dPavtiNo,
-#dPavtiDate{
+    #dPavtiNo,
 
-    width:100% !important;
+    #dPavtiDate{
 
-    min-width:0 !important;
+        width:130px;
 
-    height:17px !important;
+        font-size:10px;
 
-    padding:1px 3px !important;
-
-    font-size:10px !important;
-
-    line-height:1 !important;
-
-    box-sizing:border-box;
-
-}
+    }
 
 
-    /* ==========================================
-            DUPLICATE CUSTOMER
-    ========================================== */
-
-    .duplicateCustomer{
-
-    width:100% !important;
-
-    display:grid !important;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:4px !important;
-
-    margin:2px 0 !important;
-
-    box-sizing:border-box;
-
-}
-
-
-    .duplicateCustomer > div{
-
-    min-width:0;
-
-    gap:3px !important;
-
-    padding-bottom:1px !important;
-
-}
-
-      .duplicateCustomer label{
-
-    font-size:9px !important;
-
-    line-height:1 !important;
-
-}
+    .duplicateCustomer label,
 
     .duplicateCustomer span{
 
-    min-width:0 !important;
+        font-size:10px;
 
-    padding:1px 3px !important;
-
-    font-size:10px !important;
-
-    line-height:1 !important;
-
-    overflow:hidden;
-
-    text-overflow:ellipsis;
-
-    white-space:nowrap;
-
-}
+    }
 
 
-    /* ==========================================
-            DUPLICATE BODY
-    ========================================== */
+    .receiptTitle{
 
-    .receiptBody{
+        font-size:12px;
 
-    width:100%;
-
-    margin-top:2px !important;
-
-    padding-top:2px !important;
-
-    box-sizing:border-box;
-
-}
+    }
 
 
     .receiptBody p{
 
-    font-size:10px !important;
+        font-size:10px;
 
-    line-height:1.15 !important;
-
-    margin:2px 0 !important;
-
-}
+    }
 
 
-    .amountWordsReceipt{
+    .amountWordsReceipt label,
 
-    width:100%;
+    #dAmountWords{
 
-    padding:2px 4px !important;
+        font-size:10px;
 
-    margin:2px 0 !important;
+    }
 
-    line-height:1.1 !important;
-
-    box-sizing:border-box;
-
-}
-
-      .amountWordsReceipt label{
-
-    font-size:9px !important;
-
-    line-height:1 !important;
-
-}
-
-
-#dAmountWords{
-
-    font-size:10px !important;
-
-    line-height:1.1 !important;
-
-    overflow-wrap:break-word;
-
-    word-break:break-word;
-
-}
-
-
-    /* ==========================================
-            PAYMENT DETAILS
-    ========================================== */
-
-    .paymentDetails{
-
-    width:100%;
-
-    display:flex;
-
-    align-items:center !important;
-
-    gap:4px !important;
-
-    margin-top:2px !important;
-
-    height:16px !important;
-
-}
-
-.paymentDetails label{
-
-    font-size:9px !important;
-
-    line-height:1 !important;
-
-}
-
-
-    #bankDetails{
-
-    min-width:0;
-
-    width:100%;
-
-    height:15px !important;
-
-    padding:0 2px !important;
-
-    font-size:9px !important;
-
-    line-height:14px !important;
-
-    box-sizing:border-box;
-
-}
-
-
-    /* ==========================================
-            FOOTER
-    ========================================== */
 
     .duplicateFooter{
 
-        width:100%;
-
-        box-sizing:border-box;
+        font-size:10px;
 
     }
-
-    #billTable{
-
-        width:100%;
-    
-        table-layout:fixed;
-    
-    }
-
-        #billTable th:nth-child(1),
-      #billTable td:nth-child(1){
-      
-          width:8%;
-      
-      }
-      
-      #billTable th:nth-child(2),
-      #billTable td:nth-child(2){
-      
-          width:42%;
-      
-      }
-      
-      #billTable th:nth-child(3),
-      #billTable td:nth-child(3){
-      
-          width:12%;
-      
-      }
-      
-      #billTable th:nth-child(4),
-      #billTable td:nth-child(4){
-      
-          width:15%;
-      
-      }
-      
-      #billTable th:nth-child(5),
-      #billTable td:nth-child(5){
-      
-          width:15%;
-        
-        }
-        
-        #billTable th:nth-child(6),
-        #billTable td:nth-child(6){
-        
-            width:8%;
-        
-        }
-
-      .duplicateReceipt .duplicateFooter{
-
-    width:100%;
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    margin-top:1px !important;
-
-    padding-top:1px !important;
-
-    border-top:1px solid #ccc;
-
-    font-size:8px !important;
-
-    line-height:1 !important;
-
-    min-height:12px !important;
-
-}
 
 }
