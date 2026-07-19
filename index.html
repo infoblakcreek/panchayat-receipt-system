@@ -63,7 +63,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 </div>
 
  
-<div class="page">
+          <div class="page" id="formPage">
     
   
     <!--  ==================================================
@@ -119,90 +119,107 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
                           <table class="customerTable">
 
-        <tr>
+                          <tr>
+                  
+                              <td colspan="3">
+                  
+                                  <label>શ્રીમાન, </label>
+                  
+                                  <input
+                                      type="text"
+                                      id="customerName">
+                  
+                              </td>
+                  
+                          </tr>
+                  
+                  
+                         <tr>
+                  
+                      <td class="addressCell">
+                  
+                          <label>સરનામું: </label>
+                  
+                          <input
+                              type="text"
+                              id="village">
+                  
+                  
+                          <label class="panchayatLabel">
+                              ગ્રામ પંચાયત
+                          </label>
+                  
+                      </td>
+                  
+                  
+                      <td>
+                  
+                          <label>તાલુકો: </label>
+                  
+                          <input
+                              type="text"
+                              id="taluka">
+                  
+                      </td>
+                  
+                  
+                      <td>
+                  
+                          <label>જિલ્લો: </label>
+                  
+                          <input
+                              type="text"
+                              id="district">
+                  
+                      </td>
+                  
+                  </tr>
+                            <tr>
 
-            <td colspan="3">
-
-                <label>શ્રીમાન, </label>
-
-                <input
-                    type="text"
-                    id="customerName">
-
-            </td>
-
-        </tr>
-
-
-       <tr>
-
-    <td class="addressCell">
-
-        <label>સરનામું: </label>
-
-        <input
-            type="text"
-            id="village">
-
-
-        <label class="panchayatLabel">
-            ગ્રામ પંચાયત
-        </label>
-
-    </td>
-
-
-    <td>
-
-        <label>તાલુકો: </label>
-
-        <input
-            type="text"
-            id="taluka">
-
-    </td>
-
-
-    <td>
-
-        <label>જિલ્લો: </label>
-
-        <input
-            type="text"
-            id="district">
-
-    </td>
-
-</tr>
-
-
-        <tr>
-
-            <td>
-
-                <label>બિલ નંબર: </label>
-
-                <input
-                    type="text"
-                    id="billNo"
-                    readonly>
-
-            </td>
-
-
-            <td>
-
-                <label>તારીખ: </label>
-
-                <input
-                    type="date"
-                    id="billDate">
-
-            </td>
-
-        </tr>
-
-    </table>
+                                  <td>
+                              
+                                      <label>
+                                          મોબાઇલ નંબર:
+                                      </label>
+                              
+                                      <input
+                                          type="tel"
+                                          id="mobileNumber"
+                                          inputmode="numeric"
+                                          maxlength="10">
+                              
+                                  </td>
+                              
+                              </tr>
+                  
+                  
+                          <tr>
+                  
+                              <td>
+                  
+                                  <label>બિલ નંબર: </label>
+                  
+                                  <input
+                                      type="text"
+                                      id="billNo"
+                                      readonly>
+                  
+                              </td>
+                  
+                  
+                              <td>
+                  
+                                  <label>તારીખ: </label>
+                  
+                                  <input
+                                      type="date"
+                                      id="billDate">
+                  
+                              </td>
+                  
+                          </tr>
+                  
+                      </table>
 
                     </div>
                     <!--==================================================
@@ -276,15 +293,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                           <div class="addItemArea">
                                 <button id="addRow" type="button">
                                     + Add Next Row 
-                                </button>
-                                    <button
-                                        id="generateReceiptBtn"
-                                        type="button">
-                                    
-                                        🧾 <span>Generate Receipt</span>
-                            
-                                    </button>
-                                  
+                                </button>                                 
                            </div>  
                         <table class="summaryTable">
       
@@ -325,6 +334,37 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
                       ==========================================-->
         
                       <section class="signatureSection">
+
+                     <div class="paymentDetailsForm">
+
+                            <label for="bankDetails">
+                                બેંક / ચેકની વિગત:
+                            </label>
+                        
+                            <textarea
+                            id="paymentDetails"
+                            rows="2"
+                            placeholder="બેંકનું નામ / ચેક નંબર / અન્ય ચુકવણીની વિગત">
+                            </textarea>
+                        
+                        
+                            <div class="generateReceiptArea">
+                        
+                                <button
+                                    id="generateReceiptBtn"
+                                    type="button">
+                        
+                                    🧾
+                                    <span>
+                                        Generate Receipt
+                                    </span>
+                        
+                                </button>
+                        
+                            </div>
+                        
+                        </div>
+                                                
                         <div class="duplicateFooter">
         
                             <div>
@@ -345,8 +385,254 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
              </section>
       
          </div>
-  
-  
+          
+  </div>
+
+        
+          
+           <!-- ==================================================
+                GENERATED RECEIPT VIEW
+        ================================================== -->
+
+         <div id="printableBills" class="generatedReceiptPage">
+            
+                <!-- ==========================================
+                        MAIN BILL
+                =========================================== -->
+            
+                <section
+                    id="generatedMainBill">
+            
+                    <table class="printBillTable">
+            
+                        <!-- HEADER -->
+            
+                        <tr class="printHeaderRow">
+
+                              <!-- LEFT SIDE: MAIN HEADER -->
+                              <td colspan="4">
+                          
+                                  <div class="printGanesh">
+                                      શ્રી ગણેશાય નમઃ
+                                  </div>
+                          
+                                  <h1>
+                                      બીપીનભાઈ ઈશ્વરલાલ પટેલ
+                                  </h1>
+                          
+                                  <h2>
+                                      BIPINBHAI ISHVARLAL PATEL
+                                  </h2>
+                          
+                                  <p>
+                                      ૧૧૪/ નાના પ્લોટ, વિનાયક ટ્રેડિંગ કંપની ની બાજુ માં,
+                                      નવા ગંજ બજાર, પાટણ -૩૮૪૨૬૫
+                                  </p>
+                          
+                                  <p>
+                                      પંચાયત તથા રેવન્યુનું કોમ્પ્યુટરાઇઝ્ડ કામકાજ કરી આપનાર
+                                  </p>
+                          
+                              </td>
+                          
+                          
+                              <!-- RIGHT SIDE: PHONE -->
+                              <td class="printPhone">
+                      
+                              <strong>મો.</strong><br>
+                      
+                              99980 10986
+                      
+                          </td>
+                      
+                      </tr>
+            
+              <!-- ==========================================
+                       CUSTOMER DETAILS
+                  ========================================== -->
+                  
+                  <tr class="printCustomerRow">
+                  
+                      <td colspan="6">
+                  
+                          <table class="printCustomerDetails">
+                  
+                              <!-- CUSTOMER NAME -->
+                  
+                              <tr>
+                  
+                                  <td colspan="6">
+                  
+                                      <label>શ્રીમાન,</label>
+                  
+                                      <span id="pCustomerName"></span>
+                  
+                                  </td>
+                  
+                              </tr>
+                  
+                  
+                              <!-- ADDRESS -->
+                  
+                              <tr>
+                  
+                                  <td colspan="2">
+                  
+                                      <label>સરનામું:</label>
+                  
+                                      <span id="pVillage"></span>
+                  
+                                      <span class="panchayatText">
+                                          ગ્રામ પંચાયત
+                                      </span>
+                  
+                                  </td>
+                  
+                  
+                                  <td colspan="2">
+                  
+                                      <label>તાલુકો:</label>
+                  
+                                      <span id="pTaluka"></span>
+                  
+                                  </td>
+                  
+                  
+                                  <td colspan="2">
+                  
+                                      <label>જિલ્લો:</label>
+                  
+                                      <span id="pDistrict"></span>
+                  
+                                  </td>
+                  
+                              </tr>
+                  
+                  
+                              <!-- MOBILE NUMBER -->
+                  
+                              <tr>
+                  
+                                  <td colspan="3">
+                  
+                                      <label>મોબાઇલ નંબર:</label>
+                  
+                                      <span id="pMobileNumber"></span>
+                  
+                                  </td>
+                  
+                  
+                                  <td colspan="3"></td>
+                  
+                              </tr>
+                  
+                  
+                              <!-- BILL NUMBER + DATE -->
+                  
+                              <tr>
+                  
+                                  <td colspan="3">
+                  
+                                      <label>બિલ નંબર:</label>
+                  
+                                      <span id="pBillNo"></span>
+                  
+                                  </td>
+                  
+                  
+                                  <td colspan="3">
+                  
+                                      <label>તારીખ:</label>
+                  
+                                      <span id="pBillDate"></span>
+                  
+                                  </td>
+                  
+                              </tr>
+                  
+                          </table>
+                  
+                      </td>
+                  
+                  </tr>
+
+                        <tr class="itemTableSpace">
+                            <td colspan="5">
+                        
+                                <table class="innerItemTable">
+                        
+                                    <tr class="printItemHeader">
+                                        <th>ક્રમ</th>
+                                        <th>વિગત</th>
+                                        <th>પાનાં</th>
+                                        <th>ભાવ (₹)</th>
+                                        <th>રકમ (₹)</th>
+                                    </tr>
+                        
+                                    <tbody id="printMainItems"></tbody>
+                        
+                                </table>
+                        
+                            </td>
+                        </tr>
+            
+                        <!-- SUMMARY -->
+            
+                        <!-- TOTAL ROW -->
+
+                        <tr class="printSummaryRow">
+                          
+                              <td width="70%"colspan="3">
+                                  <label>રકમ શબ્દોમાં:</label>
+                                  <span id="pAmountWords"></span>
+                              </td>
+                              
+                              <td width="30%" colspan="2">
+                                  <label>કુલ રકમ:</label>
+                                  <span id="pGrandTotal">₹</span>
+                              </td>
+                          
+                       </tr>
+            
+            
+                        <!-- PAYMENT DETAILS -->
+            
+                        <tr>
+
+                            <td colspan="6" class="printPaymentDetails">
+
+                                <strong> બેંક / ચેકની વિગત:</strong>
+                            
+                                <span id="pPaymentDetails"></span>
+                            
+                            </td>
+                        
+                        </tr>
+            
+            
+                        <!-- FOOTER -->
+            
+                        <tr class="printFooter">
+            
+                            <td colspan="3">
+            
+                                બાકી / રોકડા
+            
+                            </td>
+            
+                            <td colspan="3">
+            
+                                ફોર : બીપીનભાઈ ઈશ્વરલાલ પટેલ
+            
+                            </td>
+            
+                        </tr>
+            
+                    </table>
+            
+                </section>
+
+             
      <!--==================================================
                           CUT LINE
       ===================================================-->
@@ -363,171 +649,172 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
           <section class="duplicateReceipt" id="duplicateReceipt" hidden>
 
-  
-  
-          <!-- DUPLICATE HEADER -->
-    <div class="duplicateHeader">
-
-        <div class="duplicateCompany">
-
-            <h4>બીપીનભાઈ ઈશ્વરલાલ પટેલ</h4>
-
-            <p>
-                પંચાયત તથા રેવન્યુનું કોમ્પ્યુટરાઇઝ્ડ કામકાજ
-            </p>
-
-        </div>
-
-        <div class="duplicatePhone">
-            📞 9998010986
-        </div>
-
-    </div>
-
-
-    <!-- RECEIPT TITLE -->
-    <div class="receiptTitle">
-        પાવતી
-    </div>
-
-
-    <!-- RECEIPT NUMBER AND DATE -->
-    <div class="duplicateReceiptHeader">
-
-          <div>
-      
-              <label>પાવતી નંબર:</label>
-
-            <input
-                    type="text"
-                    id="dPavtiNo"
-                    readonly>
-            
-          </div>
-      
-          <div>
-      
-              <label>તારીખ:</label>
-
-              <input type="date" id="dPavtiDate">
               
-          </div>
-
-    </div>
-
-            <div class="duplicateCustomer">
-
-    <div class="fullWidth">
-
-        <label>શ્રીમાન, </label>
-
-        <span id="dCustomerName"></span>
-
-    </div>
-
-</div>
-
-    <!-- CUSTOMER NAME -->
-    <div class="duplicateCustomer">
-
-    <div class="duplicateAddressCell">
-
-        <label>સરનામું:</label>
-
-        <span id="dVillage"></span>
-
-        <label class="panchayatLabel">
-            ગ્રામ પંચાયત
-        </label>
-
-    </div>
-
-
-    <div>
-
-        <label>તાલુકો:</label>
-
-        <span id="dTaluka"></span>
-
-    </div>
-
-
-    <div>
-
-        <label>જિલ્લો:</label>
-
-        <span id="dDistrict"></span>
-
-    </div>
-
-</div>
-
-    <!-- RECEIPT BODY -->
-    <div class="receiptBody">
-
-        <p>
-            આપના તરફથી મળેલ રકમ
-            <strong>
-                <span id="dGrandTotal"></span>
-            </strong>
-            (અંકે)
-        </p>
-
-
-        <div class="amountWordsReceipt">
-
-            <label>રકમ શબ્દોમાં</label>
-
-            <span id="dAmountWords"></span>
-
-        </div>
-
-
-        <div class="paymentDetails">
-
-            <div>
-                <label>બાકી</label>
-                <span id="dBaki"></span>
+              
+                      <!-- DUPLICATE HEADER -->
+                <div class="duplicateHeader">
+            
+                    <div class="duplicateCompany">
+            
+                        <h4>બીપીનભાઈ ઈશ્વરલાલ પટેલ</h4>
+            
+                        <p>
+                            પંચાયત તથા રેવન્યુનું કોમ્પ્યુટરાઇઝ્ડ કામકાજ
+                        </p>
+            
+                    </div>
+            
+                    <div class="duplicatePhone">
+                        📞 9998010986
+                    </div>
+            
+                </div>
+            
+            
+                <!-- RECEIPT TITLE -->
+                <div class="receiptTitle">
+                    પાવતી
+                </div>
+            
+            
+                <!-- RECEIPT NUMBER AND DATE -->
+                <div class="duplicateReceiptHeader">
+            
+                      <div>
+                  
+                          <label>પાવતી નંબર:</label>
+            
+                        <input
+                                type="text"
+                                id="dPavtiNo"
+                                readonly>
+                        
+                      </div>
+                  
+                      <div>
+                  
+                          <label>તારીખ:</label>
+            
+                          <input type="date" id="dPavtiDate">
+                          
+                      </div>
+            
+                </div>
+            
+                        <div class="duplicateCustomer">
+            
+                <div class="fullWidth">
+            
+                    <label>શ્રીમાન, </label>
+            
+                    <span id="dCustomerName"></span>
+            
+                </div>
+            
             </div>
-
-            <div>
-                <label>રોકડા</label>
-                <span id="dRokada"></span>
+            
+                <!-- CUSTOMER NAME -->
+                <div class="duplicateCustomer">
+            
+                <div class="duplicateAddressCell">
+            
+                    <label>સરનામું:</label>
+            
+                    <span id="dVillage"></span>
+            
+                    <label class="panchayatLabel">
+                        ગ્રામ પંચાયત
+                    </label>
+            
+                </div>
+            
+            
+                <div>
+            
+                    <label>તાલુકો:</label>
+            
+                    <span id="dTaluka"></span>
+            
+                </div>
+            
+            
+                <div>
+            
+                    <label>જિલ્લો:</label>
+            
+                    <span id="dDistrict"></span>
+            
+                </div>
+            
             </div>
-
-        </div>
-
-
-        <div class="paymentDetails bankDetailsRow">
-
-            <label for="bankDetails">
-                બેંક / ચેકની વિગત:
-            </label>
-
-            <textarea id="bankDetails"></textarea>
-
-        </div>
-
-    </div>
-
-
-    <!-- DUPLICATE FOOTER -->
-    <div class="duplicateFooter">
-
-        <div>
-            ગ્રાહકની સહી
-        </div>
-
-        <div>
-            ફોર : બીપીનભાઈ ઈશ્વરલાલ પટેલ
-        </div>
-
-    </div>
+            
+                <!-- RECEIPT BODY -->
+                <div class="receiptBody">
+            
+                    <p>
+                        આપના તરફથી મળેલ રકમ
+                        <strong>
+                            <span id="dGrandTotal"></span>
+                        </strong>
+                        (અંકે)
+                    </p>
+            
+            
+                    <div class="amountWordsReceipt">
+            
+                        <label>રકમ શબ્દોમાં</label>
+            
+                        <span id="dAmountWords"></span>
+            
+                    </div>
+            
+            
+                    <div class="paymentDetails">
+            
+                        <div>
+                            <label>બાકી</label>
+                            <span id="dBaki"></span>
+                        </div>
+            
+                        <div>
+                            <label>રોકડા</label>
+                            <span id="dRokada"></span>
+                        </div>
+            
+                    </div>
+            
+                      <div class="paymentDetails bankDetailsRow">
+            
+                          <label>
+                              બેંક / ચેકની વિગત:
+                          </label>
+                      
+                          <span id="dPaymentDetails"></span>
+                      
+                      </div>
+                    
+            
+                </div>
+            
+            
+                <!-- DUPLICATE FOOTER -->
+                <div class="duplicateFooter">
+            
+                    <div>
+                        ગ્રાહકની સહી
+                    </div>
+            
+                    <div>
+                        ફોર : બીપીનભાઈ ઈશ્વરલાલ પટેલ
+                    </div>
+            
+                </div>
 
         </section>
 
-    
 
+</div>
+  
               <!-- ==========================================
                  SEARCH BILL MODAL
             ========================================== -->
@@ -590,7 +877,6 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
 
     </div>
 
-</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
